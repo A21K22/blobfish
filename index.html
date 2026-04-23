@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Español — Gramática & Vocabulario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F5F0E8; --ink: #1A1208; --terracotta: #C4522A;
+      --gold: #D4A843; --sage: #5C7A5F;
+    }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 80% 20%, rgba(196,82,42,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse 50% 60% at 10% 80%, rgba(92,122,95,0.07) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem; background: rgba(245,240,232,0.85);
+      backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,18,8,0.08);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--terracotta); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--terracotta); }
+    .nav-links a.active { color: var(--terracotta); border-bottom: 1.5px solid var(--terracotta); padding-bottom: 2px; }
+    .hero {
+      position: relative; z-index: 1; min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 8rem 2rem 4rem;
+    }
+    .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 900; line-height: 0.95; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+    .hero-title em { font-style: italic; color: var(--terracotta); }
+    .hero-subtitle { font-size: 1.05rem; font-weight: 300; color: rgba(26,18,8,0.6); max-width: 500px; line-height: 1.7; margin-bottom: 4rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+    .cards { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 960px; width: 100%; padding: 0 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
+    .card { background: white; border-radius: 4px; padding: 2.5rem 2rem; text-decoration: none; color: var(--ink); border: 1px solid rgba(26,18,8,0.08); transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden; }
+    .card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,18,8,0.1); }
+    .card:hover::before { transform: scaleX(1); }
+    .card.pp::before   { background: var(--terracotta); }
+    .card.plup::before { background: var(--sage); }
+    .card.vocab::before{ background: var(--gold); }
+    .card-number { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; line-height: 1; margin-bottom: 1rem; opacity: 0.12; }
+    .card.pp .card-number   { color: var(--terracotta); }
+    .card.plup .card-number { color: var(--sage); }
+    .card.vocab .card-number{ color: var(--gold); }
+    .card-tag { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; margin-bottom: 0.4rem; }
+    .card.pp .card-tag   { color: var(--terracotta); }
+    .card.plup .card-tag { color: var(--sage); }
+    .card.vocab .card-tag{ color: var(--gold); }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .card-spanish { font-size: 0.78rem; font-style: italic; color: rgba(26,18,8,0.38); margin-bottom: 0.6rem; }
+    .card-desc { font-size: 0.84rem; color: rgba(26,18,8,0.55); line-height: 1.6; }
+    .card-arrow { margin-top: 1.5rem; font-size: 1.2rem; opacity: 0.3; transition: opacity 0.2s, transform 0.2s; }
+    .card:hover .card-arrow { opacity: 0.8; transform: translateX(4px); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } .nav-links { gap: 0.8rem; } .cards { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">Español</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="present-perfect.html">Present Perfect</a></li>
+      <li><a href="past-perfect.html">Past Perfect</a></li>
+      <li><a href="vocabulario.html">Vocabulary</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Spanish Grammar Project</p>
+    <h1 class="hero-title">Master<br><em>Spanish</em><br>Tenses</h1>
+    <p class="hero-subtitle">Explore the present perfect, past perfect, and essential vocabulary to build fluency in Spanish.</p>
+
+    <div class="cards">
+      <a href="present-perfect.html" class="card pp">
+        <div class="card-number">01</div>
+        <p class="card-tag">Present Perfect</p>
+        <h2 class="card-title">Present Perfect</h2>
+        <p class="card-spanish">Pretérito Perfecto</p>
+        <p class="card-desc">He comido, has vivido — past actions still relevant to the present moment.</p>
+        <div class="card-arrow">→</div>
+      </a>
+      <a href="past-perfect.html" class="card plup">
+        <div class="card-number">02</div>
+        <p class="card-tag">Past Perfect</p>
+        <h2 class="card-title">Past Perfect</h2>
+        <p class="card-spanish">Pluscuamperfecto</p>
+        <p class="card-desc">Había comido, habías vivido — actions completed before another past event.</p>
+        <div class="card-arrow">→</div>
+      </a>
+      <a href="vocabulario.html" class="card vocab">
+        <div class="card-number">03</div>
+        <p class="card-tag">Vocabulary</p>
+        <h2 class="card-title">Key Vocabulary</h2>
+        <p class="card-spanish">Vocabulario Esencial</p>
+        <p class="card-desc">Essential verbs, nouns, and phrases for natural conversation.</p>
+        <div class="card-arrow">→</div>
+      </a>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Past Perfect — Español</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream: #F5F0E8; --ink: #1A1208; --terracotta: #C4522A; --gold: #D4A843; --sage: #5C7A5F; --accent: #5C7A5F; --accent-light: rgba(92,122,95,0.08); }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+    body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 70% 50% at 10% 90%, rgba(92,122,95,0.1) 0%, transparent 60%); pointer-events: none; z-index: 0; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(245,240,232,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,18,8,0.08); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--terracotta); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-links a.active { color: var(--sage); border-bottom: 1.5px solid var(--sage); padding-bottom: 2px; }
+    main { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 7rem 2rem 5rem; }
+
+    .page-header { margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s; }
+    .page-tag { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+    .page-tag::before { content: '02'; font-family: 'Playfair Display', serif; font-size: 1rem; opacity: 0.3; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.05; margin-bottom: 0.4rem; }
+    .h1-spanish { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: rgba(26,18,8,0.35); margin-bottom: 1rem; }
+    .page-intro { font-size: 1rem; color: rgba(26,18,8,0.6); max-width: 560px; line-height: 1.8; }
+
+    .section { margin-bottom: 2.8rem; opacity: 0; animation: fadeUp 0.7s ease forwards; }
+    .section:nth-child(1){animation-delay:0.2s} .section:nth-child(2){animation-delay:0.3s}
+    .section:nth-child(3){animation-delay:0.4s} .section:nth-child(4){animation-delay:0.5s}
+    .section:nth-child(5){animation-delay:0.6s}
+    .section-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(26,18,8,0.1); display: flex; align-items: center; gap: 0.6rem; }
+    .section-title span { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-family: 'DM Sans', sans-serif; font-weight: 500; }
+
+    .formula-box { background: var(--accent); color: white; border-radius: 4px; padding: 1.4rem 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .formula-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; white-space: nowrap; }
+    .formula-parts { display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap; }
+    .f-part { background: rgba(255,255,255,0.18); border-radius: 3px; padding: 0.45rem 0.9rem; font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; }
+    .f-plus { font-size: 1.1rem; opacity: 0.6; }
+    .f-example { font-size: 0.82rem; opacity: 0.75; margin-left: 0.5rem; font-style: italic; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .conj-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .conj-table thead tr { background: var(--accent); color: white; }
+    .conj-table th { padding: 0.7rem 1rem; text-align: left; font-weight: 500; font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .conj-table td { padding: 0.6rem 1rem; border-bottom: 1px solid rgba(26,18,8,0.06); }
+    .conj-table tbody tr:hover { background: var(--accent-light); }
+    .conj-table .pronoun { color: rgba(26,18,8,0.42); font-size: 0.83rem; }
+    .conj-table .hl { color: var(--accent); font-weight: 700; }
+
+    /* Contrast box: Present Perfect vs Past Perfect */
+    .contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .contrast-side { border-radius: 4px; padding: 1.3rem 1.5rem; }
+    .contrast-side.pp { background: rgba(196,82,42,0.07); border: 1px solid rgba(196,82,42,0.2); }
+    .contrast-side.plup { background: rgba(92,122,95,0.08); border: 1px solid rgba(92,122,95,0.25); }
+    .contrast-side h4 { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 0.5rem; }
+    .contrast-side.pp h4 { color: var(--terracotta); }
+    .contrast-side.plup h4 { color: var(--sage); }
+    .contrast-side .formula { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .contrast-side p { font-size: 0.83rem; color: rgba(26,18,8,0.6); line-height: 1.6; }
+    .contrast-side .ex { margin-top: 0.5rem; font-style: italic; font-size: 0.82rem; color: var(--ink); }
+
+    /* Timeline visual */
+    .timeline-box { background: white; border: 1px solid rgba(26,18,8,0.09); border-radius: 4px; padding: 1.5rem 2rem; }
+    .timeline { position: relative; margin: 1rem 0 0.5rem; height: 60px; }
+    .tl-line { position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: rgba(26,18,8,0.12); transform: translateY(-50%); }
+    .tl-arrow { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid rgba(26,18,8,0.25); }
+    .tl-dot { position: absolute; top: 50%; width: 12px; height: 12px; border-radius: 50%; transform: translate(-50%, -50%); }
+    .tl-dot.action1 { left: 25%; background: var(--terracotta); }
+    .tl-dot.action2 { left: 55%; background: var(--sage); }
+    .tl-dot.now { left: 90%; background: var(--ink); width: 10px; height: 10px; }
+    .tl-label { position: absolute; font-size: 0.7rem; white-space: nowrap; }
+    .tl-label.action1 { left: 25%; top: calc(50% + 14px); transform: translateX(-50%); color: var(--terracotta); font-weight: 600; }
+    .tl-label.action2 { left: 55%; top: calc(50% - 28px); transform: translateX(-50%); color: var(--sage); font-weight: 600; }
+    .tl-label.now { left: 90%; top: calc(50% + 14px); transform: translateX(-50%); color: var(--ink); }
+    .tl-caption { font-size: 0.8rem; color: rgba(26,18,8,0.5); margin-top: 0.5rem; text-align: center; }
+
+    /* When to use */
+    .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .use-item { background: white; border: 1px solid rgba(26,18,8,0.08); border-radius: 4px; padding: 1.1rem 1.3rem; }
+    .use-item h4 { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+    .use-item p { font-size: 0.83rem; color: rgba(26,18,8,0.6); line-height: 1.6; }
+    .use-item .ex { margin-top: 0.4rem; font-style: italic; font-size: 0.81rem; color: var(--ink); }
+
+    .ex-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .ex-list li { background: white; border: 1px solid rgba(26,18,8,0.07); border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0; padding: 0.85rem 1.2rem; display: flex; flex-direction: column; gap: 0.18rem; }
+    .ex-list .es { font-weight: 500; font-size: 0.93rem; }
+    .ex-list .es strong { color: var(--accent); }
+    .ex-list .en { font-size: 0.79rem; color: rgba(26,18,8,0.42); font-style: italic; }
+
+    /* Markers */
+    .markers { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .marker { background: white; border: 1px solid rgba(26,18,8,0.1); border-radius: 50px; padding: 0.3rem 0.85rem; font-size: 0.8rem; font-weight: 500; }
+    .marker.hl { background: var(--accent); color: white; border-color: var(--accent); }
+
+    .page-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(26,18,8,0.1); opacity: 0; animation: fadeUp 0.7s ease forwards 0.75s; }
+    .page-nav a { text-decoration: none; color: var(--ink); font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .page-nav a:hover { color: var(--sage); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } .nav-links { gap: 0.8rem; } .two-col, .contrast, .uses-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">Español</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="present-perfect.html">Present Perfect</a></li>
+      <li><a href="past-perfect.html" class="active">Past Perfect</a></li>
+      <li><a href="vocabulario.html">Vocabulary</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <p class="page-tag">Section Two</p>
+      <h1>Past <em style="font-style:italic;color:var(--sage)">Perfect</em></h1>
+      <p class="h1-spanish">Pluscuamperfecto (Pretérito Pluscuamperfecto)</p>
+      <p class="page-intro">The past perfect describes an action that was <strong>already completed before another past event</strong>. It is the "past of the past." Formed with the <em>imperfect</em> of <strong>haber</strong> + a past participle.</p>
+    </header>
+
+    <!-- FORMULA -->
+    <div class="section">
+      <h2 class="section-title">Formula <span>How to form it</span></h2>
+      <div class="formula-box">
+        <p class="formula-label">Structure</p>
+        <div class="formula-parts">
+          <div class="f-part">haber (imperfect)</div>
+          <div class="f-plus">+</div>
+          <div class="f-part">past participle</div>
+          <span class="f-example">→ "Yo había comido" (I had eaten)</span>
+        </div>
+      </div>
+      <div class="two-col">
+        <table class="conj-table">
+          <thead><tr><th>Subject</th><th>Haber (imperfect)</th></tr></thead>
+          <tbody>
+            <tr><td class="pronoun">yo</td><td class="hl">había</td></tr>
+            <tr><td class="pronoun">tú</td><td class="hl">habías</td></tr>
+            <tr><td class="pronoun">él / ella / Ud.</td><td class="hl">había</td></tr>
+            <tr><td class="pronoun">nosotros</td><td class="hl">habíamos</td></tr>
+            <tr><td class="pronoun">vosotros</td><td class="hl">habíais</td></tr>
+            <tr><td class="pronoun">ellos / Uds.</td><td class="hl">habían</td></tr>
+          </tbody>
+        </table>
+        <table class="conj-table">
+          <thead><tr><th>Verb</th><th>Past Participle</th></tr></thead>
+          <tbody>
+            <tr><td>hablar (-AR)</td><td class="hl">habl<strong>ado</strong></td></tr>
+            <tr><td>comer (-ER)</td><td class="hl">com<strong>ido</strong></td></tr>
+            <tr><td>vivir (-IR)</td><td class="hl">viv<strong>ido</strong></td></tr>
+            <tr><td>hacer</td><td class="hl">hecho ⚠</td></tr>
+            <tr><td>ver</td><td class="hl">visto ⚠</td></tr>
+            <tr><td>escribir</td><td class="hl">escrito ⚠</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TIMELINE VISUAL -->
+    <div class="section">
+      <h2 class="section-title">Timeline <span>The "past of the past"</span></h2>
+      <div class="timeline-box">
+        <div class="timeline">
+          <div class="tl-line"></div>
+          <div class="tl-arrow"></div>
+          <div class="tl-dot action1"></div>
+          <div class="tl-dot action2"></div>
+          <div class="tl-dot now"></div>
+          <span class="tl-label action1">① Past Perfect<br>(había comido)</span>
+          <span class="tl-label action2">② Simple Past<br>(llegué)</span>
+          <span class="tl-label now">NOW</span>
+        </div>
+        <p class="tl-caption">① happens <em>before</em> ② — both are in the past. The past perfect (①) sets up the earlier action.</p>
+      </div>
+    </div>
+
+    <!-- PP vs PLUP CONTRAST -->
+    <div class="section">
+      <h2 class="section-title">Present Perfect vs. Past Perfect <span>Key difference</span></h2>
+      <div class="contrast">
+        <div class="contrast-side pp">
+          <h4>Present Perfect</h4>
+          <p class="formula">he / has / ha… + participio</p>
+          <p>Past action with a <strong>link to now</strong>. The exact time is unimportant or the action just happened.</p>
+          <p class="ex">"He comido." → I have eaten. (relevant to now)</p>
+        </div>
+        <div class="contrast-side plup">
+          <h4>Past Perfect</h4>
+          <p class="formula">había / habías / había… + participio</p>
+          <p>Action completed <strong>before another past moment</strong>. Sets context for a past story or event.</p>
+          <p class="ex">"Había comido cuando llegaste." → I had already eaten when you arrived.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHEN TO USE -->
+    <div class="section">
+      <h2 class="section-title">When to Use It <span>Key uses</span></h2>
+      <div class="uses-grid">
+        <div class="use-item">
+          <h4>Before another past event</h4>
+          <p>The main use — one action preceded another in the past.</p>
+          <p class="ex">→ "Cuando llegué, ella ya había salido." (When I arrived, she had already left.)</p>
+        </div>
+        <div class="use-item">
+          <h4>Reported speech (backshift)</h4>
+          <p>Reporting what someone said, shifting the tense back.</p>
+          <p class="ex">→ "Dijo que había terminado." (He said that he had finished.)</p>
+        </div>
+        <div class="use-item">
+          <h4>Unfulfilled wishes / regrets</h4>
+          <p>With "ojalá" or "si" for things that didn't happen.</p>
+          <p class="ex">→ "Ojalá hubiera estudiado más." (I wish I had studied more.)</p>
+        </div>
+        <div class="use-item">
+          <h4>Storytelling / narrative</h4>
+          <p>Providing background for events in a past-tense story.</p>
+          <p class="ex">→ "No sabía que había llovido toda la noche." (I didn't know it had rained all night.)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIME MARKERS -->
+    <div class="section">
+      <h2 class="section-title">Time Markers <span>Clue words</span></h2>
+      <div class="markers">
+        <span class="marker hl">ya (already)</span>
+        <span class="marker hl">cuando (when)</span>
+        <span class="marker hl">antes de que (before)</span>
+        <span class="marker hl">después de que (after)</span>
+        <span class="marker">nunca antes (never before)</span>
+        <span class="marker">todavía no (not yet)</span>
+        <span class="marker">apenas (hardly / just)</span>
+        <span class="marker">hacía… que (for… had been)</span>
+      </div>
+    </div>
+
+    <!-- EXAMPLES -->
+    <div class="section">
+      <h2 class="section-title">Examples <span>In context</span></h2>
+      <ul class="ex-list">
+        <li><span class="es">Cuando llegué, ella ya <strong>había salido</strong>.</span><span class="en">When I arrived, she had already left.</span></li>
+        <li><span class="es">Nosotros <strong>habíamos comido</strong> antes de ir al cine.</span><span class="en">We had eaten before going to the movies.</span></li>
+        <li><span class="es">Él dijo que <strong>había terminado</strong> el proyecto.</span><span class="en">He said that he had finished the project.</span></li>
+        <li><span class="es">Nunca antes <strong>había visto</strong> tanta nieve.</span><span class="en">I had never seen so much snow before.</span></li>
+        <li><span class="es">Ellos no sabían que el tren ya <strong>había partido</strong>.</span><span class="en">They didn't know the train had already departed.</span></li>
+        <li><span class="es">Cuando llamaste, yo ya <strong>había hecho</strong> la tarea.</span><span class="en">When you called, I had already done the homework.</span></li>
+      </ul>
+    </div>
+
+    <nav class="page-nav">
+      <a href="present-perfect.html">← Present Perfect</a>
+      <a href="vocabulario.html">Vocabulary →</a>
+    </nav>
+  </main>
+</body>
+</html>

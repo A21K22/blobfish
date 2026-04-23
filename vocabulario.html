@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vocabulario — Español</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F0E8;
+      --ink: #1A1208;
+      --terracotta: #C4522A;
+      --gold: #D4A843;
+      --gold-dark: #A07A20;
+      --sage: #5C7A5F;
+      --accent: #D4A843;
+      --accent-dark: #A07A20;
+      --accent-light: rgba(212,168,67,0.1);
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,168,67,0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(245,240,232,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26,18,8,0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--terracotta);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold-dark); }
+    .nav-links a.active { color: var(--gold-dark); border-bottom: 1.5px solid var(--gold-dark); padding-bottom: 2px; }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 7rem 2rem 5rem;
+    }
+
+    .page-header {
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.1s;
+    }
+
+    .page-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-tag::before {
+      content: '03';
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      opacity: 0.3;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .page-intro {
+      font-size: 1rem;
+      color: rgba(26,18,8,0.6);
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    /* Filter tabs */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 1px solid rgba(26,18,8,0.12);
+      color: var(--ink);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    /* Section */
+    .vocab-section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .vocab-section:nth-child(1) { animation-delay: 0.3s; }
+    .vocab-section:nth-child(2) { animation-delay: 0.4s; }
+    .vocab-section:nth-child(3) { animation-delay: 0.5s; }
+    .vocab-section:nth-child(4) { animation-delay: 0.6s; }
+    .vocab-section:nth-child(5) { animation-delay: 0.7s; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(26,18,8,0.1);
+    }
+
+    .section-title-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Vocab grid */
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .vocab-card {
+      background: white;
+      border: 1px solid rgba(26,18,8,0.08);
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vocab-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s;
+    }
+
+    .vocab-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(26,18,8,0.08);
+    }
+
+    .vocab-card:hover::after { transform: scaleX(1); }
+
+    .vocab-es {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: var(--ink);
+    }
+
+    .vocab-en {
+      font-size: 0.8rem;
+      color: rgba(26,18,8,0.45);
+      font-style: italic;
+    }
+
+    .vocab-type {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Wide list for phrases */
+    .phrase-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .phrase-item {
+      background: white;
+      border: 1px solid rgba(26,18,8,0.07);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      padding: 0.8rem 1.2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .phrase-es { font-weight: 600; font-size: 0.9rem; }
+    .phrase-en { font-size: 0.82rem; color: rgba(26,18,8,0.45); font-style: italic; }
+
+    /* Flashcard mini-game */
+    .flashcard-zone {
+      background: white;
+      border: 1px solid rgba(26,18,8,0.1);
+      border-radius: 6px;
+      padding: 2rem;
+      text-align: center;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.8s;
+    }
+
+    .flashcard-zone h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .flashcard-zone p {
+      font-size: 0.85rem;
+      color: rgba(26,18,8,0.5);
+      margin-bottom: 1.5rem;
+    }
+
+    .flashcard {
+      background: var(--cream);
+      border: 2px solid rgba(26,18,8,0.08);
+      border-radius: 6px;
+      padding: 2rem;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      margin-bottom: 1rem;
+      perspective: 600px;
+    }
+
+    .flashcard:hover { border-color: var(--accent); }
+
+    .card-front, .card-back {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .card-back {
+      display: none;
+      color: var(--accent-dark);
+    }
+
+    .card-hint {
+      font-size: 0.75rem;
+      color: rgba(26,18,8,0.35);
+      margin-top: 0.5rem;
+    }
+
+    .fc-controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .fc-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .fc-btn:hover { background: var(--accent-dark); }
+    .fc-btn.secondary { background: transparent; border: 1px solid rgba(26,18,8,0.15); color: var(--ink); }
+    .fc-btn.secondary:hover { background: rgba(26,18,8,0.05); }
+
+    .fc-counter {
+      font-size: 0.8rem;
+      color: rgba(26,18,8,0.4);
+      margin-top: 1rem;
+    }
+
+    .page-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(26,18,8,0.1);
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 1s;
+    }
+
+    .page-nav a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .page-nav a:hover { color: var(--gold-dark); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .vocab-grid { grid-template-columns: 1fr 1fr; }
+      .phrase-item { grid-template-columns: 1fr; gap: 0.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Español</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="present-perfect.html">Present Perfect</a></li>
+      <li><a href="past-perfect.html">Past Perfect</a></li>
+      <li><a href="vocabulario.html" class="active">Vocabulary</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <p class="page-tag">Sección tres</p>
+      <h1>Palabras<br><em style="font-style:italic;color:var(--gold-dark)">Esenciales</em></h1>
+      <p class="page-intro">Vocabulario fundamental organizado por categoría. Haz clic en las tarjetas para practicar y memorizar.</p>
+    </header>
+
+    <!-- VERBOS -->
+    <div class="vocab-section" data-category="verbos">
+      <p class="section-label">Verbos</p>
+      <h2 class="section-title-h2">Verbos Comunes</h2>
+      <div class="vocab-grid">
+        <div class="vocab-card"><p class="vocab-es">hablar</p><p class="vocab-en">to speak / to talk</p><p class="vocab-type">verbo -ar</p></div>
+        <div class="vocab-card"><p class="vocab-es">comer</p><p class="vocab-en">to eat</p><p class="vocab-type">verbo -er</p></div>
+        <div class="vocab-card"><p class="vocab-es">vivir</p><p class="vocab-en">to live</p><p class="vocab-type">verbo -ir</p></div>
+        <div class="vocab-card"><p class="vocab-es">trabajar</p><p class="vocab-en">to work</p><p class="vocab-type">verbo -ar</p></div>
+        <div class="vocab-card"><p class="vocab-es">estudiar</p><p class="vocab-en">to study</p><p class="vocab-type">verbo -ar</p></div>
+        <div class="vocab-card"><p class="vocab-es">escribir</p><p class="vocab-en">to write</p><p class="vocab-type">verbo -ir</p></div>
+        <div class="vocab-card"><p class="vocab-es">leer</p><p class="vocab-en">to read</p><p class="vocab-type">verbo -er</p></div>
+        <div class="vocab-card"><p class="vocab-es">escuchar</p><p class="vocab-en">to listen</p><p class="vocab-type">verbo -ar</p></div>
+        <div class="vocab-card"><p class="vocab-es">viajar</p><p class="vocab-en">to travel</p><p class="vocab-type">verbo -ar</p></div>
+        <div class="vocab-card"><p class="vocab-es">aprender</p><p class="vocab-en">to learn</p><p class="vocab-type">verbo -er</p></div>
+        <div class="vocab-card"><p class="vocab-es">ver</p><p class="vocab-en">to see / to watch</p><p class="vocab-type">verbo -er (irr.)</p></div>
+        <div class="vocab-card"><p class="vocab-es">salir</p><p class="vocab-en">to leave / go out</p><p class="vocab-type">verbo -ir (irr.)</p></div>
+      </div>
+    </div>
+
+    <!-- SUSTANTIVOS -->
+    <div class="vocab-section" data-category="sustantivos">
+      <p class="section-label">Sustantivos</p>
+      <h2 class="section-title-h2">Personas y Lugares</h2>
+      <div class="vocab-grid">
+        <div class="vocab-card"><p class="vocab-es">la familia</p><p class="vocab-en">family</p><p class="vocab-type">sustantivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">el amigo / la amiga</p><p class="vocab-en">friend</p><p class="vocab-type">sustantivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">la ciudad</p><p class="vocab-en">city</p><p class="vocab-type">sustantivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">la escuela</p><p class="vocab-en">school</p><p class="vocab-type">sustantivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">el trabajo</p><p class="vocab-en">work / job</p><p class="vocab-type">sustantivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">la casa</p><p class="vocab-en">house / home</p><p class="vocab-type">sustantivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">el país</p><p class="vocab-en">country</p><p class="vocab-type">sustantivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">el tiempo</p><p class="vocab-en">time / weather</p><p class="vocab-type">sustantivo</p></div>
+      </div>
+    </div>
+
+    <!-- ADJETIVOS -->
+    <div class="vocab-section" data-category="adjetivos">
+      <p class="section-label">Adjetivos</p>
+      <h2 class="section-title-h2">Descripciones</h2>
+      <div class="vocab-grid">
+        <div class="vocab-card"><p class="vocab-es">grande</p><p class="vocab-en">big / large</p><p class="vocab-type">adjetivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">pequeño/a</p><p class="vocab-en">small</p><p class="vocab-type">adjetivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">bueno/a</p><p class="vocab-en">good</p><p class="vocab-type">adjetivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">malo/a</p><p class="vocab-en">bad</p><p class="vocab-type">adjetivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">nuevo/a</p><p class="vocab-en">new</p><p class="vocab-type">adjetivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">viejo/a</p><p class="vocab-en">old</p><p class="vocab-type">adjetivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">interesante</p><p class="vocab-en">interesting</p><p class="vocab-type">adjetivo</p></div>
+        <div class="vocab-card"><p class="vocab-es">difícil</p><p class="vocab-en">difficult</p><p class="vocab-type">adjetivo</p></div>
+      </div>
+    </div>
+
+    <!-- FRASES ÚTILES -->
+    <div class="vocab-section" data-category="frases">
+      <p class="section-label">Frases</p>
+      <h2 class="section-title-h2">Frases Útiles</h2>
+      <div class="phrase-list">
+        <div class="phrase-item"><span class="phrase-es">¿Cómo estás?</span><span class="phrase-en">How are you?</span></div>
+        <div class="phrase-item"><span class="phrase-es">Mucho gusto.</span><span class="phrase-en">Nice to meet you.</span></div>
+        <div class="phrase-item"><span class="phrase-es">¿De dónde eres?</span><span class="phrase-en">Where are you from?</span></div>
+        <div class="phrase-item"><span class="phrase-es">No entiendo.</span><span class="phrase-en">I don't understand.</span></div>
+        <div class="phrase-item"><span class="phrase-es">¿Puedes repetir, por favor?</span><span class="phrase-en">Can you repeat, please?</span></div>
+        <div class="phrase-item"><span class="phrase-es">¿Cuánto cuesta?</span><span class="phrase-en">How much does it cost?</span></div>
+        <div class="phrase-item"><span class="phrase-es">Tengo hambre / sed.</span><span class="phrase-en">I am hungry / thirsty.</span></div>
+        <div class="phrase-item"><span class="phrase-es">¡Buena suerte!</span><span class="phrase-en">Good luck!</span></div>
+      </div>
+    </div>
+
+    <!-- FLASHCARD GAME -->
+    <div class="flashcard-zone">
+      <h3>Practica con Tarjetas</h3>
+      <p>Haz clic en la tarjeta para ver la traducción.</p>
+      <div class="flashcard" id="flashcard" onclick="flipCard()">
+        <div class="card-front" id="card-front">hablar</div>
+        <div class="card-back" id="card-back">to speak</div>
+        <p class="card-hint" id="card-hint">Haz clic para revelar →</p>
+      </div>
+      <div class="fc-controls">
+        <button class="fc-btn secondary" onclick="prevCard()">← Anterior</button>
+        <button class="fc-btn" onclick="nextCard()">Siguiente →</button>
+      </div>
+      <p class="fc-counter" id="fc-counter">1 / 10</p>
+    </div>
+
+    <nav class="page-nav">
+      <a href="past-perfect.html">← Past Perfect</a>
+      <a href="index.html">Inicio →</a>
+    </nav>
+  </main>
+
+  <script>
+    const cards = [
+      { es: 'hablar', en: 'to speak' },
+      { es: 'la familia', en: 'family' },
+      { es: 'grande', en: 'big / large' },
+      { es: 'estudiar', en: 'to study' },
+      { es: 'la ciudad', en: 'city' },
+      { es: 'interesante', en: 'interesting' },
+      { es: 'viajar', en: 'to travel' },
+      { es: 'el trabajo', en: 'work / job' },
+      { es: 'nuevo/a', en: 'new' },
+      { es: 'aprender', en: 'to learn' },
+    ];
+
+    let current = 0;
+    let flipped = false;
+
+    const frontEl = document.getElementById('card-front');
+    const backEl = document.getElementById('card-back');
+    const hintEl = document.getElementById('card-hint');
+    const counterEl = document.getElementById('fc-counter');
+
+    function updateCard() {
+      frontEl.style.display = 'block';
+      backEl.style.display = 'none';
+      hintEl.style.display = 'block';
+      hintEl.textContent = 'Haz clic para revelar →';
+      frontEl.textContent = cards[current].es;
+      backEl.textContent = cards[current].en;
+      counterEl.textContent = `${current + 1} / ${cards.length}`;
+      flipped = false;
+    }
+
+    function flipCard() {
+      if (!flipped) {
+        frontEl.style.display = 'none';
+        backEl.style.display = 'block';
+        hintEl.textContent = cards[current].es;
+        flipped = true;
+      } else {
+        frontEl.style.display = 'block';
+        backEl.style.display = 'none';
+        hintEl.textContent = 'Haz clic para revelar →';
+        flipped = false;
+      }
+    }
+
+    function nextCard() {
+      current = (current + 1) % cards.length;
+      updateCard();
+    }
+
+    function prevCard() {
+      current = (current - 1 + cards.length) % cards.length;
+      updateCard();
+    }
+
+    updateCard();
+  </script>
+
+</body>
+</html>
