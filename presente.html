@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Presente Simple — Español</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F0E8;
+      --ink: #1A1208;
+      --terracotta: #C4522A;
+      --gold: #D4A843;
+      --sage: #5C7A5F;
+      --accent: #C4522A;
+      --accent-light: rgba(196,82,42,0.08);
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 90% 10%, rgba(196,82,42,0.1) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(245,240,232,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26,18,8,0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--terracotta);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--terracotta); }
+    .nav-links a.active { color: var(--terracotta); border-bottom: 1.5px solid var(--terracotta); padding-bottom: 2px; }
+
+    /* Page layout */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 7rem 2rem 5rem;
+    }
+
+    .page-header {
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.1s;
+    }
+
+    .page-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-tag::before {
+      content: '01';
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      opacity: 0.3;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .page-intro {
+      font-size: 1rem;
+      color: rgba(26,18,8,0.6);
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+    .section:nth-child(1) { animation-delay: 0.25s; }
+    .section:nth-child(2) { animation-delay: 0.35s; }
+    .section:nth-child(3) { animation-delay: 0.45s; }
+    .section:nth-child(4) { animation-delay: 0.55s; }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(26,18,8,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title span {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+    }
+
+    /* Conjugation table */
+    .conj-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .conj-table thead tr {
+      background: var(--accent);
+      color: white;
+    }
+
+    .conj-table th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .conj-table td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid rgba(26,18,8,0.06);
+    }
+
+    .conj-table tbody tr:hover { background: var(--accent-light); }
+
+    .conj-table .pronoun {
+      color: rgba(26,18,8,0.45);
+      font-size: 0.85rem;
+    }
+
+    .conj-table .form {
+      font-weight: 500;
+    }
+
+    .conj-table .highlight {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Two-col table group */
+    .table-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .verb-card {
+      background: white;
+      border: 1px solid rgba(26,18,8,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .verb-card-header {
+      background: var(--accent);
+      color: white;
+      padding: 0.6rem 1rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .verb-card-header .translation {
+      font-size: 0.72rem;
+      font-family: 'DM Sans', sans-serif;
+      opacity: 0.8;
+      font-style: italic;
+    }
+
+    .verb-card table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .verb-card table td {
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid rgba(26,18,8,0.05);
+    }
+
+    .verb-card table td:first-child {
+      color: rgba(26,18,8,0.4);
+      font-size: 0.78rem;
+    }
+
+    .verb-card table td:last-child {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Examples */
+    .examples-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .examples-list li {
+      background: white;
+      border: 1px solid rgba(26,18,8,0.07);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      padding: 0.9rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .examples-list .es {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .examples-list .en {
+      font-size: 0.8rem;
+      color: rgba(26,18,8,0.45);
+      font-style: italic;
+    }
+
+    /* Uses */
+    .uses-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .use-item {
+      background: white;
+      border: 1px solid rgba(26,18,8,0.08);
+      border-radius: 4px;
+      padding: 1.2rem 1.4rem;
+    }
+
+    .use-item h4 {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .use-item p {
+      font-size: 0.85rem;
+      color: rgba(26,18,8,0.6);
+      line-height: 1.6;
+    }
+
+    .use-item .example {
+      margin-top: 0.4rem;
+      font-style: italic;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    /* Page nav */
+    .page-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(26,18,8,0.1);
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.7s;
+    }
+
+    .page-nav a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .page-nav a:hover { color: var(--terracotta); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .table-row { grid-template-columns: 1fr; }
+      .uses-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Español</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="presente.html" class="active">Presente</a></li>
+      <li><a href="pasado.html">Pasado</a></li>
+      <li><a href="vocabulario.html">Vocabulario</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <p class="page-tag">Sección uno</p>
+      <h1>Presente<br><em style="font-style:italic;color:var(--terracotta)">Simple</em></h1>
+      <p class="page-intro">El presente simple describe acciones habituales, verdades generales y situaciones actuales. Es el tiempo verbal más fundamental en español.</p>
+    </header>
+
+    <!-- USES -->
+    <div class="section">
+      <h2 class="section-title">Usos <span>Cuándo usarlo</span></h2>
+      <div class="uses-grid">
+        <div class="use-item">
+          <h4>Hábitos y rutinas</h4>
+          <p>Acciones que se repiten con regularidad.</p>
+          <p class="example">→ "Yo como pizza los viernes."</p>
+        </div>
+        <div class="use-item">
+          <h4>Verdades generales</h4>
+          <p>Hechos y verdades universales.</p>
+          <p class="example">→ "El sol sale por el este."</p>
+        </div>
+        <div class="use-item">
+          <h4>Estado actual</h4>
+          <p>Situaciones que existen en este momento.</p>
+          <p class="example">→ "Ella vive en Madrid."</p>
+        </div>
+        <div class="use-item">
+          <h4>Futuro programado</h4>
+          <p>Eventos futuros ya planificados.</p>
+          <p class="example">→ "El avión sale mañana a las tres."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENDINGS -->
+    <div class="section">
+      <h2 class="section-title">Terminaciones <span>Reglas</span></h2>
+      <table class="conj-table">
+        <thead>
+          <tr>
+            <th>Pronombre</th>
+            <th>-AR (hablar)</th>
+            <th>-ER (comer)</th>
+            <th>-IR (vivir)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="pronoun">yo</td><td class="highlight">hablo</td><td class="highlight">como</td><td class="highlight">vivo</td></tr>
+          <tr><td class="pronoun">tú</td><td>hablas</td><td>comes</td><td>vives</td></tr>
+          <tr><td class="pronoun">él/ella/Ud.</td><td>habla</td><td>come</td><td>vive</td></tr>
+          <tr><td class="pronoun">nosotros</td><td>hablamos</td><td>comemos</td><td>vivimos</td></tr>
+          <tr><td class="pronoun">vosotros</td><td>habláis</td><td>coméis</td><td>vivís</td></tr>
+          <tr><td class="pronoun">ellos/Uds.</td><td>hablan</td><td>comen</td><td>viven</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- IRREGULAR VERBS -->
+    <div class="section">
+      <h2 class="section-title">Verbos Irregulares <span>Comunes</span></h2>
+      <div class="table-row">
+        <div class="verb-card">
+          <div class="verb-card-header">ser <span class="translation">to be (perm.)</span></div>
+          <table>
+            <tr><td>yo</td><td>soy</td></tr>
+            <tr><td>tú</td><td>eres</td></tr>
+            <tr><td>él/ella</td><td>es</td></tr>
+            <tr><td>nosotros</td><td>somos</td></tr>
+            <tr><td>ellos</td><td>son</td></tr>
+          </table>
+        </div>
+        <div class="verb-card">
+          <div class="verb-card-header">estar <span class="translation">to be (temp.)</span></div>
+          <table>
+            <tr><td>yo</td><td>estoy</td></tr>
+            <tr><td>tú</td><td>estás</td></tr>
+            <tr><td>él/ella</td><td>está</td></tr>
+            <tr><td>nosotros</td><td>estamos</td></tr>
+            <tr><td>ellos</td><td>están</td></tr>
+          </table>
+        </div>
+        <div class="verb-card">
+          <div class="verb-card-header">tener <span class="translation">to have</span></div>
+          <table>
+            <tr><td>yo</td><td>tengo</td></tr>
+            <tr><td>tú</td><td>tienes</td></tr>
+            <tr><td>él/ella</td><td>tiene</td></tr>
+            <tr><td>nosotros</td><td>tenemos</td></tr>
+            <tr><td>ellos</td><td>tienen</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAMPLES -->
+    <div class="section">
+      <h2 class="section-title">Ejemplos <span>En contexto</span></h2>
+      <ul class="examples-list">
+        <li><span class="es">Yo <strong>hablo</strong> español todos los días.</span><span class="en">I speak Spanish every day.</span></li>
+        <li><span class="es">Ella <strong>come</strong> fruta por la mañana.</span><span class="en">She eats fruit in the morning.</span></li>
+        <li><span class="es">Nosotros <strong>vivimos</strong> cerca de la escuela.</span><span class="en">We live near the school.</span></li>
+        <li><span class="es">¿Tú <strong>trabajas</strong> los fines de semana?</span><span class="en">Do you work on weekends?</span></li>
+        <li><span class="es">Los estudiantes <strong>estudian</strong> mucho.</span><span class="en">The students study a lot.</span></li>
+        <li><span class="es">Mi familia <strong>es</strong> de México.</span><span class="en">My family is from Mexico.</span></li>
+      </ul>
+    </div>
+
+    <nav class="page-nav">
+      <a href="index.html">← Inicio</a>
+      <a href="pasado.html">Pretérito Perfecto →</a>
+    </nav>
+  </main>
+
+</body>
+</html>
