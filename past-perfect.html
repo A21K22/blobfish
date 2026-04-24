@@ -11,19 +11,42 @@
     :root { --cream: #F5F0E8; --ink: #1A1208; --terracotta: #C4522A; --gold: #D4A843; --sage: #5C7A5F; --accent: #5C7A5F; --accent-light: rgba(92,122,95,0.08); }
     body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
     body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 70% 50% at 10% 90%, rgba(92,122,95,0.1) 0%, transparent 60%); pointer-events: none; z-index: 0; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(245,240,232,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,18,8,0.08); }
+    
+    nav { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      z-index: 100; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 1.2rem 3rem; 
+      background: rgba(245,240,232,0.85); 
+      backdrop-filter: blur(12px); 
+      border-bottom: 1px solid rgba(26,18,8,0.08); 
+    }
+    
     .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--terracotta); text-decoration: none; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--sage); }
     .nav-links a.active { color: var(--sage); border-bottom: 1.5px solid var(--sage); padding-bottom: 2px; }
-    main { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 7rem 2rem 5rem; }
 
-    .page-header { margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s; }
+    /* ADJUSTED TOP PADDING HERE */
+    main { 
+      position: relative; 
+      z-index: 1; 
+      max-width: 860px; 
+      margin: 0 auto; 
+      padding: 11rem 2rem 5rem; /* Pushes content down further from nav */
+    }
+
+    .page-header { margin-bottom: 4rem; opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s; }
     .page-tag { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
     .page-tag::before { content: '02'; font-family: 'Playfair Display', serif; font-size: 1rem; opacity: 0.3; }
     h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.05; margin-bottom: 0.4rem; }
-    .h1-spanish { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: rgba(26,18,8,0.35); margin-bottom: 1rem; }
+    .h1-spanish { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: rgba(26,18,8,0.35); margin-bottom: 1.5rem; }
     .page-intro { font-size: 1rem; color: rgba(26,18,8,0.6); max-width: 560px; line-height: 1.8; }
 
     .section { margin-bottom: 2.8rem; opacity: 0; animation: fadeUp 0.7s ease forwards; }
@@ -49,7 +72,6 @@
     .conj-table .pronoun { color: rgba(26,18,8,0.42); font-size: 0.83rem; }
     .conj-table .hl { color: var(--accent); font-weight: 700; }
 
-    /* Contrast box: Present Perfect vs Past Perfect */
     .contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .contrast-side { border-radius: 4px; padding: 1.3rem 1.5rem; }
     .contrast-side.pp { background: rgba(196,82,42,0.07); border: 1px solid rgba(196,82,42,0.2); }
@@ -61,7 +83,6 @@
     .contrast-side p { font-size: 0.83rem; color: rgba(26,18,8,0.6); line-height: 1.6; }
     .contrast-side .ex { margin-top: 0.5rem; font-style: italic; font-size: 0.82rem; color: var(--ink); }
 
-    /* Timeline visual */
     .timeline-box { background: white; border: 1px solid rgba(26,18,8,0.09); border-radius: 4px; padding: 1.5rem 2rem; }
     .timeline { position: relative; margin: 1rem 0 0.5rem; height: 60px; }
     .tl-line { position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: rgba(26,18,8,0.12); transform: translateY(-50%); }
@@ -76,7 +97,6 @@
     .tl-label.now { left: 90%; top: calc(50% + 14px); transform: translateX(-50%); color: var(--ink); }
     .tl-caption { font-size: 0.8rem; color: rgba(26,18,8,0.5); margin-top: 0.5rem; text-align: center; }
 
-    /* When to use */
     .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .use-item { background: white; border: 1px solid rgba(26,18,8,0.08); border-radius: 4px; padding: 1.1rem 1.3rem; }
     .use-item h4 { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
@@ -89,7 +109,6 @@
     .ex-list .es strong { color: var(--accent); }
     .ex-list .en { font-size: 0.79rem; color: rgba(26,18,8,0.42); font-style: italic; }
 
-    /* Markers */
     .markers { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .marker { background: white; border: 1px solid rgba(26,18,8,0.1); border-radius: 50px; padding: 0.3rem 0.85rem; font-size: 0.8rem; font-weight: 500; }
     .marker.hl { background: var(--accent); color: white; border-color: var(--accent); }
@@ -99,7 +118,12 @@
     .page-nav a:hover { color: var(--sage); }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } .nav-links { gap: 0.8rem; } .two-col, .contrast, .uses-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 700px) { 
+      nav { padding: 1rem 1.5rem; } 
+      .nav-links { gap: 0.8rem; } 
+      .two-col, .contrast, .uses-grid { grid-template-columns: 1fr; } 
+      main { padding-top: 9rem; } /* Slightly less on mobile but still plenty */
+    }
   </style>
 </head>
 <body>
@@ -121,7 +145,6 @@
       <p class="page-intro">The past perfect describes an action that was <strong>already completed before another past event</strong>. It is the "past of the past." Formed with the <em>imperfect</em> of <strong>haber</strong> + a past participle.</p>
     </header>
 
-    <!-- FORMULA -->
     <div class="section">
       <h2 class="section-title">Formula <span>How to form it</span></h2>
       <div class="formula-box">
@@ -159,7 +182,6 @@
       </div>
     </div>
 
-    <!-- TIMELINE VISUAL -->
     <div class="section">
       <h2 class="section-title">Timeline <span>The "past of the past"</span></h2>
       <div class="timeline-box">
@@ -177,7 +199,6 @@
       </div>
     </div>
 
-    <!-- PP vs PLUP CONTRAST -->
     <div class="section">
       <h2 class="section-title">Present Perfect vs. Past Perfect <span>Key difference</span></h2>
       <div class="contrast">
@@ -196,7 +217,6 @@
       </div>
     </div>
 
-    <!-- WHEN TO USE -->
     <div class="section">
       <h2 class="section-title">When to Use It <span>Key uses</span></h2>
       <div class="uses-grid">
@@ -223,7 +243,6 @@
       </div>
     </div>
 
-    <!-- TIME MARKERS -->
     <div class="section">
       <h2 class="section-title">Time Markers <span>Clue words</span></h2>
       <div class="markers">
@@ -238,7 +257,6 @@
       </div>
     </div>
 
-    <!-- EXAMPLES -->
     <div class="section">
       <h2 class="section-title">Examples <span>In context</span></h2>
       <ul class="ex-list">
