@@ -37,40 +37,44 @@
       text-align: center; padding: 8rem 2rem 4rem;
     }
 
-    /* New layout container for Paco + Title */
+    /* Centering Container for Paco + Title */
     .hero-content-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 3rem;
-      margin-bottom: 1.5rem;
-      max-width: 1200px;
+      gap: 2.5rem;
+      margin: 0 auto 2rem auto;
+      max-width: 1000px;
+      width: 100%;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.4s;
     }
 
     .paco-img {
-      width: 280px;
-      height: 280px;
+      width: 260px;
+      height: 260px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 8px solid white;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      object-fit: contain; /* Ensures Paco isn't cropped weirdly */
+      background-color: #fff;
+      border: 6px solid white;
+      box-shadow: 0 15px 35px rgba(26,18,8,0.1);
+      flex-shrink: 0;
     }
 
     .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
     
     .hero-title { 
       font-family: 'Playfair Display', serif; 
-      font-size: clamp(3rem, 6vw, 5.5rem); 
+      font-size: clamp(2.8rem, 6vw, 5.5rem); 
       font-weight: 900; 
       line-height: 0.95; 
-      text-align: left;
+      text-align: left; 
+      margin: 0;
     }
     
     .hero-title em { font-style: italic; color: var(--terracotta); }
     
-    .hero-subtitle { font-size: 1.05rem; font-weight: 300; color: rgba(26,18,8,0.6); max-width: 500px; line-height: 1.7; margin-bottom: 4rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+    .hero-subtitle { font-size: 1.05rem; font-weight: 300; color: rgba(26,18,8,0.6); max-width: 550px; line-height: 1.7; margin-bottom: 4rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
     
     .cards { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 960px; width: 100%; padding: 0 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
     .card { background: white; border-radius: 4px; padding: 2.5rem 2rem; text-decoration: none; color: var(--ink); border: 1px solid rgba(26,18,8,0.08); transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden; }
@@ -121,8 +125,8 @@
     <p class="hero-eyebrow">Spanish Grammar Project</p>
     
     <div class="hero-content-wrapper">
-      <h1 class="hero-title">Master<br><em>Spanish</em><br>with Paco</h1>
       <img src="paco.png" alt="Paco" class="paco-img">
+      <h1 class="hero-title">Master<br><em>Spanish</em><br>with Paco</h1>
     </div>
 
     <p class="hero-subtitle">Explore the present perfect, past perfect, and essential vocabulary to build fluency in Spanish with Paco's guidance.</p>
