@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Español — Gramática & Vocabulario</title>
+  <title>Español — Master Spanish with Paco</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -30,15 +30,48 @@
     .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--terracotta); }
     .nav-links a.active { color: var(--terracotta); border-bottom: 1.5px solid var(--terracotta); padding-bottom: 2px; }
+    
     .hero {
       position: relative; z-index: 1; min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; padding: 8rem 2rem 4rem;
     }
+
+    /* New layout container for Paco + Title */
+    .hero-content-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 1.5rem;
+      max-width: 1200px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .paco-img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 8px solid white;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
     .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
-    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 900; line-height: 0.95; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+    
+    .hero-title { 
+      font-family: 'Playfair Display', serif; 
+      font-size: clamp(3rem, 6vw, 5.5rem); 
+      font-weight: 900; 
+      line-height: 0.95; 
+      text-align: left;
+    }
+    
     .hero-title em { font-style: italic; color: var(--terracotta); }
+    
     .hero-subtitle { font-size: 1.05rem; font-weight: 300; color: rgba(26,18,8,0.6); max-width: 500px; line-height: 1.7; margin-bottom: 4rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+    
     .cards { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 960px; width: 100%; padding: 0 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
     .card { background: white; border-radius: 4px; padding: 2.5rem 2rem; text-decoration: none; color: var(--ink); border: 1px solid rgba(26,18,8,0.08); transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden; }
     .card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
@@ -52,21 +85,30 @@
     .card.plup .card-number { color: var(--sage); }
     .card.vocab .card-number{ color: var(--gold); }
     .card-tag { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; margin-bottom: 0.4rem; }
-    .card.pp .card-tag   { color: var(--terracotta); }
-    .card.plup .card-tag { color: var(--sage); }
-    .card.vocab .card-tag{ color: var(--gold); }
     .card-title { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 700; margin-bottom: 0.3rem; }
     .card-spanish { font-size: 0.78rem; font-style: italic; color: rgba(26,18,8,0.38); margin-bottom: 0.6rem; }
     .card-desc { font-size: 0.84rem; color: rgba(26,18,8,0.55); line-height: 1.6; }
     .card-arrow { margin-top: 1.5rem; font-size: 1.2rem; opacity: 0.3; transition: opacity 0.2s, transform 0.2s; }
     .card:hover .card-arrow { opacity: 0.8; transform: translateX(4px); }
+
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } .nav-links { gap: 0.8rem; } .cards { grid-template-columns: 1fr; } }
+
+    @media (max-width: 850px) {
+      .hero-content-wrapper { flex-direction: column; text-align: center; gap: 1.5rem; }
+      .hero-title { text-align: center; }
+      .paco-img { width: 200px; height: 200px; }
+    }
+
+    @media (max-width: 700px) { 
+      nav { padding: 1rem 1.5rem; } 
+      .nav-links { gap: 0.8rem; } 
+      .cards { grid-template-columns: 1fr; } 
+    }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html" class="nav-logo">Español</a>
+    <a href="index.html" class="nav-logo">Español con Paco</a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="present-perfect.html">Present Perfect</a></li>
@@ -77,8 +119,13 @@
 
   <section class="hero">
     <p class="hero-eyebrow">Spanish Grammar Project</p>
-    <h1 class="hero-title">Master<br><em>Spanish</em><br>Tenses</h1>
-    <p class="hero-subtitle">Explore the present perfect, past perfect, and essential vocabulary to build fluency in Spanish.</p>
+    
+    <div class="hero-content-wrapper">
+      <img src="paco.png" alt="Paco" class="paco-img">
+      <h1 class="hero-title">Master<br><em>Spanish</em><br>with Paco</h1>
+    </div>
+
+    <p class="hero-subtitle">Explore the present perfect, past perfect, and essential vocabulary to build fluency in Spanish with Paco's guidance.</p>
 
     <div class="cards">
       <a href="present-perfect.html" class="card pp">
