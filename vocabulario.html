@@ -21,194 +21,77 @@
       --accent-light: rgba(212,168,67,0.1);
     }
 
-    body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-    }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
 
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
+      content: ''; position: fixed; inset: 0;
       background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,168,67,0.08) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
+      pointer-events: none; z-index: 0;
     }
 
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: rgba(245,240,232,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(26,18,8,0.08);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem; background: rgba(245,240,232,0.85);
+      backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,18,8,0.08);
     }
 
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-style: italic;
-      color: var(--terracotta);
-      text-decoration: none;
-    }
-
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--terracotta); text-decoration: none; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--ink);
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
+    .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold-dark); }
     .nav-links a.active { color: var(--gold-dark); border-bottom: 1.5px solid var(--gold-dark); padding-bottom: 2px; }
 
-    main {
-      position: relative;
-      z-index: 1;
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 7rem 2rem 5rem;
-    }
+    main { position: relative; z-index: 1; max-width: 920px; margin: 0 auto; padding: 11rem 2rem 5rem; }
 
-    .page-header {
-      margin-bottom: 3.5rem;
-      opacity: 0;
-      animation: fadeUp 0.7s ease forwards 0.1s;
-    }
+    .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .header-nav-btns { display: flex; gap: 0.5rem; }
+    .header-nav-btns a { text-decoration: none; width: 32px; height: 32px; border: 1px solid rgba(26,18,8,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink); font-size: 0.9rem; transition: all 0.2s; }
+    .header-nav-btns a:hover { border-color: var(--gold); color: var(--gold); }
 
-    .page-tag {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+    .page-header { margin-bottom: 3.5rem; opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s; }
+    .page-tag { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+    .page-tag::before { content: '03'; font-family: 'Playfair Display', serif; font-size: 1rem; opacity: 0.3; }
+    
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.05; margin-bottom: 1rem; }
+    .page-intro { font-size: 1rem; color: rgba(26,18,8,0.6); max-width: 560px; line-height: 1.8; }
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 900;
-      line-height: 1.05;
-      margin-bottom: 1rem;
-    }
+    .vocab-section { margin-bottom: 4rem; opacity: 0; animation: fadeUp 0.7s ease forwards 0.3s; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(26,18,8,0.1); }
+    .section-title-h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.2rem; }
 
-    .vocab-section {
-      margin-bottom: 4rem;
-      opacity: 0;
-      animation: fadeUp 0.7s ease forwards 0.3s;
+    .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    
+    .vocab-card { 
+      background: white; border: 1px solid rgba(26,18,8,0.08); border-radius: 4px; padding: 1rem 1.2rem; 
+      transition: all 0.2s; cursor: pointer; position: relative;
     }
-
-    .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(26,18,8,0.1);
-    }
-
-    .section-title-h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-    }
-
-    .vocab-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-
-    .vocab-card {
-      background: white;
-      border: 1px solid rgba(26,18,8,0.08);
-      border-radius: 4px;
-      padding: 1rem 1.2rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
-    }
-
-    .vocab-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(26,18,8,0.08);
-    }
+    .vocab-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,18,8,0.08); border-color: var(--gold); }
 
     .vocab-es { font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; }
     .vocab-en { font-size: 0.8rem; color: rgba(26,18,8,0.5); font-style: italic; }
+    
+    .vocab-ex { 
+      font-size: 0.75rem; color: var(--gold-dark); margin-top: 0.8rem; padding-top: 0.8rem; 
+      border-top: 1px solid rgba(0,0,0,0.05); display: none; line-height: 1.4;
+    }
 
     .phrase-list { display: flex; flex-direction: column; gap: 0.6rem; }
-    .phrase-item {
-      background: white;
-      border-left: 3px solid var(--accent);
-      padding: 0.8rem 1.2rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      font-size: 0.9rem;
-    }
+    .phrase-item { background: white; border-left: 3px solid var(--accent); padding: 0.8rem 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.9rem; }
     .phrase-en { color: rgba(26,18,8,0.5); font-style: italic; }
 
-    .flashcard-zone {
-      background: white;
-      border: 1px solid rgba(26,18,8,0.1);
-      border-radius: 6px;
-      padding: 2rem;
-      text-align: center;
-      margin-top: 4rem;
-    }
+    #quiz-container { background: white; border: 1px solid rgba(26,18,8,0.08); border-radius: 4px; padding: 2.5rem; text-align: center; margin-top: 2rem; }
+    .paco-avatar { width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--accent-light); margin-bottom: 1.5rem; object-fit: cover; }
+    .quiz-input { padding: 0.8rem 1.2rem; border: 1px solid rgba(26,18,8,0.2); border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 1rem; width: 100%; max-width: 300px; margin-bottom: 1rem; text-align: center; }
+    .quiz-btn { background: var(--gold); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: 700; }
 
-    .flashcard {
-      background: var(--cream);
-      border: 2px solid rgba(26,18,8,0.08);
-      border-radius: 6px;
-      padding: 3rem 1rem;
-      min-height: 150px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      margin-bottom: 1.5rem;
-    }
+    .page-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(26,18,8,0.1); opacity: 0; animation: fadeUp 0.7s ease forwards 0.75s; }
+    .page-nav a { text-decoration: none; color: var(--ink); font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .page-nav a:hover { color: var(--gold-dark); }
 
-    .card-front, .card-back { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; }
-    .card-back { display: none; color: var(--terracotta); }
-    .fc-controls { display: flex; gap: 1rem; justify-content: center; }
-    .fc-btn { background: var(--accent); color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 4px; cursor: pointer; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 700px) {
-      .vocab-grid { grid-template-columns: 1fr; }
-      .phrase-item { grid-template-columns: 1fr; }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 700px) { main { padding-top: 9rem; } .vocab-grid { grid-template-columns: 1fr; } .phrase-item { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -225,58 +108,64 @@
 
   <main>
     <header class="page-header">
-      <p class="page-tag">Sección Tres</p>
+      <div class="header-top">
+        <p class="page-tag">Sección Tres</p>
+        <div class="header-nav-btns">
+          <a href="past-perfect.html" title="Back">←</a>
+          <a href="index.html" title="Next">→</a>
+        </div>
+      </div>
       <h1>Ciencia y <br><em style="font-style:italic;color:var(--gold-dark)">Tecnología</em></h1>
-      <p class="page-intro">Explora el vocabulario sobre el mundo digital, el cosmos y los avances científicos.</p>
+      <p class="page-intro">Explora el vocabulario sobre el mundo digital, el cosmos y los avances científicos. Haz clic en las tarjetas para ejemplos.</p>
     </header>
 
     <div class="vocab-section">
       <p class="section-label">Sustantivos</p>
       <h2 class="section-title-h2">Tecnología y Espacio</h2>
       <div class="vocab-grid">
-        <div class="vocab-card"><p class="vocab-es">la arroba</p><p class="vocab-en">@ symbol</p></div>
-        <div class="vocab-card"><p class="vocab-es">el blog / la bitácora</p><p class="vocab-en">blog</p></div>
-        <div class="vocab-card"><p class="vocab-es">el buscador</p><p class="vocab-en">search engine</p></div>
-        <div class="vocab-card"><p class="vocab-es">la computadora portátil</p><p class="vocab-en">laptop</p></div>
-        <div class="vocab-card"><p class="vocab-es">la contraseña</p><p class="vocab-en">password</p></div>
-        <div class="vocab-card"><p class="vocab-es">el corrector ortográfico</p><p class="vocab-en">spell checker</p></div>
-        <div class="vocab-card"><p class="vocab-es">la dirección de correo electrónico</p><p class="vocab-en">e-mail address</p></div>
-        <div class="vocab-card"><p class="vocab-es">la informática</p><p class="vocab-en">computer science</p></div>
-        <div class="vocab-card"><p class="vocab-es">Internet / la web</p><p class="vocab-en">Internet / the web</p></div>
-        <div class="vocab-card"><p class="vocab-es">el mensaje (de texto)</p><p class="vocab-en">(text) message</p></div>
-        <div class="vocab-card"><p class="vocab-es">la página web / el sitio web</p><p class="vocab-en">web page / website</p></div>
-        <div class="vocab-card"><p class="vocab-es">el programa (de computación)</p><p class="vocab-en">software</p></div>
-        <div class="vocab-card"><p class="vocab-es">el reproductor de CD/DVD/MP3</p><p class="vocab-en">CD/DVD/MP3 player</p></div>
-        <div class="vocab-card"><p class="vocab-es">el (teléfono) celular / el móvil</p><p class="vocab-en">cell phone</p></div>
-        <div class="vocab-card"><p class="vocab-es">el enlace</p><p class="vocab-en">link</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la usuario/a</p><p class="vocab-en">user</p></div>
-        <div class="vocab-card"><p class="vocab-es">el agujero negro</p><p class="vocab-en">black hole</p></div>
-        <div class="vocab-card"><p class="vocab-es">el cohete</p><p class="vocab-en">rocket</p></div>
-        <div class="vocab-card"><p class="vocab-es">el cometa</p><p class="vocab-en">comet</p></div>
-        <div class="vocab-card"><p class="vocab-es">el espacio</p><p class="vocab-en">space</p></div>
-        <div class="vocab-card"><p class="vocab-es">la estrella (fugaz)</p><p class="vocab-en">(shooting) star</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la extraterrestre</p><p class="vocab-en">alien</p></div>
-        <div class="vocab-card"><p class="vocab-es">la gravedad</p><p class="vocab-en">gravity</p></div>
-        <div class="vocab-card"><p class="vocab-es">el ovni</p><p class="vocab-en">UFO</p></div>
-        <div class="vocab-card"><p class="vocab-es">el planeta</p><p class="vocab-en">planet</p></div>
-        <div class="vocab-card"><p class="vocab-es">el telescopio</p><p class="vocab-en">telescope</p></div>
-        <div class="vocab-card"><p class="vocab-es">el transbordador espacial</p><p class="vocab-en">space shuttle</p></div>
-        <div class="vocab-card"><p class="vocab-es">el ADN</p><p class="vocab-en">DNA</p></div>
-        <div class="vocab-card"><p class="vocab-es">el avance</p><p class="vocab-en">advance; breakthrough</p></div>
-        <div class="vocab-card"><p class="vocab-es">la célula</p><p class="vocab-en">cell</p></div>
-        <div class="vocab-card"><p class="vocab-es">el desafío</p><p class="vocab-en">challenge</p></div>
-        <div class="vocab-card"><p class="vocab-es">el descubrimiento</p><p class="vocab-en">discovery</p></div>
-        <div class="vocab-card"><p class="vocab-es">el experimento</p><p class="vocab-en">experiment</p></div>
-        <div class="vocab-card"><p class="vocab-es">el gen</p><p class="vocab-en">gene</p></div>
-        <div class="vocab-card"><p class="vocab-es">el invento</p><p class="vocab-en">invention</p></div>
-        <div class="vocab-card"><p class="vocab-es">la patente</p><p class="vocab-en">patent</p></div>
-        <div class="vocab-card"><p class="vocab-es">la teoría</p><p class="vocab-en">theory</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la astronauta</p><p class="vocab-en">astronaut</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la científico/a</p><p class="vocab-en">scientist</p></div>
-        <div class="vocab-card"><p class="vocab-es">la guita / la plata</p><p class="vocab-en">cash / money</p></div>
-        <div class="vocab-card"><p class="vocab-es">el interrogante</p><p class="vocab-en">question; doubt</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la vago/a</p><p class="vocab-en">slacker</p></div>
-        <div class="vocab-card"><p class="vocab-es">la motosierra</p><p class="vocab-en">power saw</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la arroba</p><p class="vocab-en">@ symbol</p><p class="vocab-ex">Usa la arroba para el correo.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el blog / la bitácora</p><p class="vocab-en">blog</p><p class="vocab-ex">Escribo en mi blog cada día.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el buscador</p><p class="vocab-en">search engine</p><p class="vocab-ex">Usa un buscador para encontrarlo.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la computadora portátil</p><p class="vocab-en">laptop</p><p class="vocab-ex">Llevo mi portátil a clase.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la contraseña</p><p class="vocab-en">password</p><p class="vocab-ex">No digas tu contraseña a nadie.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el corrector ortográfico</p><p class="vocab-en">spell checker</p><p class="vocab-ex">El corrector arregla mis errores.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la dirección de correo electrónico</p><p class="vocab-en">e-mail address</p><p class="vocab-ex">¿Cuál es tu dirección?</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la informática</p><p class="vocab-en">computer science</p><p class="vocab-ex">Estudio informática en la universidad.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">Internet / la web</p><p class="vocab-en">Internet / the web</p><p class="vocab-ex">Internet es muy rápido hoy.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el mensaje (de texto)</p><p class="vocab-en">(text) message</p><p class="vocab-ex">Te envié un mensaje de texto.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la página web / el sitio web</p><p class="vocab-en">web page / website</p><p class="vocab-ex">Este sitio web es muy útil.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el programa (de computación)</p><p class="vocab-en">software</p><p class="vocab-ex">Instalé un programa nuevo.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el reproductor de CD/DVD/MP3</p><p class="vocab-en">CD/DVD/MP3 player</p><p class="vocab-ex">Él tiene un reproductor antiguo.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el (teléfono) celular / el móvil</p><p class="vocab-en">cell phone</p><p class="vocab-ex">Mi celular no tiene batería.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el enlace</p><p class="vocab-en">link</p><p class="vocab-ex">Haz clic en el enlace.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el/la usuario/a</p><p class="vocab-en">user</p><p class="vocab-ex">El usuario olvidó su nombre.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el agujero negro</p><p class="vocab-en">black hole</p><p class="vocab-ex">El agujero negro absorbe luz.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el cohete</p><p class="vocab-en">rocket</p><p class="vocab-ex">El cohete va a la Luna.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el cometa</p><p class="vocab-en">comet</p><p class="vocab-ex">Vimos un cometa en el cielo.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el espacio</p><p class="vocab-en">space</p><p class="vocab-ex">El espacio es infinito.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la estrella (fugaz)</p><p class="vocab-en">(shooting) star</p><p class="vocab-ex">Pedí un deseo a la estrella fugaz.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el/la extraterrestre</p><p class="vocab-en">alien</p><p class="vocab-ex">¿Crees en los extraterrestres?</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la gravedad</p><p class="vocab-en">gravity</p><p class="vocab-ex">La gravedad nos mantiene en el suelo.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el ovni</p><p class="vocab-en">UFO</p><p class="vocab-ex">Apareció un ovni en las noticias.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el planeta</p><p class="vocab-en">planet</p><p class="vocab-ex">Marte es el planeta rojo.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el telescopio</p><p class="vocab-en">telescope</p><p class="vocab-ex">Miro las estrellas con el telescopio.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el transbordador espacial</p><p class="vocab-en">space shuttle</p><p class="vocab-ex">El transbordador aterrizó hoy.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el ADN</p><p class="vocab-en">DNA</p><p class="vocab-ex">El ADN contiene nuestra información.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el avance</p><p class="vocab-en">advance; breakthrough</p><p class="vocab-ex">Es un gran avance para la ciencia.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la célula</p><p class="vocab-en">cell</p><p class="vocab-ex">La célula es la unidad básica.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el desafío</p><p class="vocab-en">challenge</p><p class="vocab-ex">Aprender español es un desafío.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el descubrimiento</p><p class="vocab-en">discovery</p><p class="vocab-ex">Fue un descubrimiento accidental.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el experimento</p><p class="vocab-en">experiment</p><p class="vocab-ex">Hicimos un experimento químico.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el gen</p><p class="vocab-en">gene</p><p class="vocab-ex">Heredé este gen de mi padre.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el invento</p><p class="vocab-en">invention</p><p class="vocab-ex">La bombilla fue un gran invento.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la patente</p><p class="vocab-en">patent</p><p class="vocab-ex">Él tiene la patente de la idea.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la teoría</p><p class="vocab-en">theory</p><p class="vocab-ex">Es una teoría interesante.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el/la astronauta</p><p class="vocab-en">astronaut</p><p class="vocab-ex">El astronauta flota en la nave.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el/la científico/a</p><p class="vocab-en">scientist</p><p class="vocab-ex">La científica investiga la cura.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la guita / la plata</p><p class="vocab-en">cash / money</p><p class="vocab-ex">No tengo plata ahora.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el interrogante</p><p class="vocab-en">question; doubt</p><p class="vocab-ex">Queda un gran interrogante.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">el/la vago/a</p><p class="vocab-en">slacker</p><p class="vocab-ex">¡No seas vago, trabaja!</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">la motosierra</p><p class="vocab-en">power saw</p><p class="vocab-ex">Ten cuidado con la motosierra.</p></div>
       </div>
     </div>
 
@@ -284,19 +173,19 @@
       <p class="section-label">Verbos</p>
       <h2 class="section-title-h2">Acciones y Procesos</h2>
       <div class="vocab-grid">
-        <div class="vocab-card"><p class="vocab-es">adjuntar</p><p class="vocab-en">to attach</p></div>
-        <div class="vocab-card"><p class="vocab-es">descargar</p><p class="vocab-en">to download</p></div>
-        <div class="vocab-card"><p class="vocab-es">guardar</p><p class="vocab-en">to save</p></div>
-        <div class="vocab-card"><p class="vocab-es">navegar en la red</p><p class="vocab-en">to surf the web</p></div>
-        <div class="vocab-card"><p class="vocab-es">hacer clic</p><p class="vocab-en">to click</p></div>
-        <div class="vocab-card"><p class="vocab-es">actualizar</p><p class="vocab-en">to update</p></div>
-        <div class="vocab-card"><p class="vocab-es">clonar</p><p class="vocab-en">to clone</p></div>
-        <div class="vocab-card"><p class="vocab-es">comprobar (o:ue)</p><p class="vocab-en">to prove</p></div>
-        <div class="vocab-card"><p class="vocab-es">crear / fabricar</p><p class="vocab-en">to create / make</p></div>
-        <div class="vocab-card"><p class="vocab-es">investigar</p><p class="vocab-en">to research</p></div>
-        <div class="vocab-card"><p class="vocab-es">congelar(se)</p><p class="vocab-en">to freeze</p></div>
-        <div class="vocab-card"><p class="vocab-es">derretir(se) (e:i)</p><p class="vocab-en">to melt</p></div>
-        <div class="vocab-card"><p class="vocab-es">sonar (o:ue)</p><p class="vocab-en">to ring</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">adjuntar</p><p class="vocab-en">to attach</p><p class="vocab-ex">No olvides adjuntar el archivo.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">descargar</p><p class="vocab-en">to download</p><p class="vocab-ex">Voy a descargar la música.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">guardar</p><p class="vocab-en">to save</p><p class="vocab-ex">Guarda el documento antes de cerrar.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">navegar en la red</p><p class="vocab-en">to surf the web</p><p class="vocab-ex">Navego en la red por horas.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">hacer clic</p><p class="vocab-en">to click</p><p class="vocab-ex">Haz clic en el botón rojo.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">actualizar</p><p class="vocab-en">to update</p><p class="vocab-ex">Debes actualizar tu perfil.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">clonar</p><p class="vocab-en">to clone</p><p class="vocab-ex">Científicos quieren clonar al mamut.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">comprobar (o:ue)</p><p class="vocab-en">to prove</p><p class="vocab-ex">Ella quiere comprobar su hipótesis.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">crear / fabricar</p><p class="vocab-en">to create / make</p><p class="vocab-ex">Ellos fabrican coches aquí.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">investigar</p><p class="vocab-en">to research</p><p class="vocab-ex">Investigan el origen del virus.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">congelar(se)</p><p class="vocab-en">to freeze</p><p class="vocab-ex">El agua se va a congelar.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">derretir(se) (e:i)</p><p class="vocab-en">to melt</p><p class="vocab-ex">El hielo se derrite al sol.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">sonar (o:ue)</p><p class="vocab-en">to ring</p><p class="vocab-ex">El teléfono no deja de sonar.</p></div>
       </div>
     </div>
 
@@ -304,15 +193,15 @@
       <p class="section-label">Adjetivos</p>
       <h2 class="section-title-h2">Descripciones</h2>
       <div class="vocab-grid">
-        <div class="vocab-card"><p class="vocab-es">digital / en línea</p><p class="vocab-en">digital / online</p></div>
-        <div class="vocab-card"><p class="vocab-es">inalámbrico/a</p><p class="vocab-en">wireless</p></div>
-        <div class="vocab-card"><p class="vocab-es">avanzado/a</p><p class="vocab-en">advanced</p></div>
-        <div class="vocab-card"><p class="vocab-es">especializado/a</p><p class="vocab-en">specialized</p></div>
-        <div class="vocab-card"><p class="vocab-es">ético/a</p><p class="vocab-en">ethical</p></div>
-        <div class="vocab-card"><p class="vocab-es">innovador(a)</p><p class="vocab-en">innovative</p></div>
-        <div class="vocab-card"><p class="vocab-es">revolucionario/a</p><p class="vocab-en">revolutionary</p></div>
-        <div class="vocab-card"><p class="vocab-es">duro/a</p><p class="vocab-en">hard; difficult</p></div>
-        <div class="vocab-card"><p class="vocab-es">apagado/a</p><p class="vocab-en">turned off</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">digital / en línea</p><p class="vocab-en">digital / online</p><p class="vocab-ex">Leemos el diario digital.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">inalámbrico/a</p><p class="vocab-en">wireless</p><p class="vocab-ex">Tengo un teclado inalámbrico.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">avanzado/a</p><p class="vocab-en">advanced</p><p class="vocab-ex">Es una clase de nivel avanzado.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">especializado/a</p><p class="vocab-en">specialized</p><p class="vocab-ex">Es un médico especializado.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">ético/a</p><p class="vocab-en">ethical</p><p class="vocab-ex">¿Es ético clonar humanos?</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">innovador(a)</p><p class="vocab-en">innovative</p><p class="vocab-ex">Su diseño es muy innovador.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">revolucionario/a</p><p class="vocab-en">revolutionary</p><p class="vocab-ex">Fue una idea revolucionaria.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">duro/a</p><p class="vocab-en">hard; difficult</p><p class="vocab-ex">El examen fue muy duro.</p></div>
+        <div class="vocab-card" onclick="toggleEx(this)"><p class="vocab-es">apagado/a</p><p class="vocab-en">turned off</p><p class="vocab-ex">La radio está apagada.</p></div>
       </div>
     </div>
 
@@ -327,69 +216,81 @@
       </div>
     </div>
 
-    <div class="flashcard-zone">
-      <h3>Practica con Tarjetas</h3>
-      <p>Haz clic para revelar la traducción.</p>
-      <div class="flashcard" id="flashcard" onclick="flipCard()">
-        <div class="card-front" id="card-front">la contraseña</div>
-        <div class="card-back" id="card-back">password</div>
-        <p class="card-hint" id="card-hint" style="font-size: 0.7rem; color: #aaa; margin-top: 1rem;">Haz clic para revelar →</p>
+    <div class="section">
+      <h2 class="section-title-h2">Practice with Paco <span>Type the translation</span></h2>
+      <div id="quiz-container">
+        <img id="paco-img" src="paco-sad.png" class="paco-avatar" alt="Paco">
+        <h3 id="target-prompt" style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold-dark); margin-bottom: 1.5rem;">password</h3>
+        
+        <input type="text" id="user-input" class="quiz-input" placeholder="Type Spanish translation...">
+        <br>
+        <button onclick="checkAnswer()" class="quiz-btn">Check</button>
+        
+        <p id="feedback" style="margin-top: 1rem; font-weight: 500; min-height: 1.2rem;"></p>
+        <button id="next-btn" onclick="nextQuestion()" style="display: none; margin: 1rem auto 0; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; cursor: pointer;">Next Word</button>
       </div>
-      <div class="fc-controls">
-        <button class="fc-btn" onclick="prevCard()">←</button>
-        <button class="fc-btn" onclick="nextCard()">→</button>
-      </div>
-      <p id="fc-counter" style="margin-top:1rem; font-size:0.8rem; opacity:0.5;">1 / 10</p>
     </div>
 
+    <nav class="page-nav">
+      <a href="past-perfect.html">← Past Perfect</a>
+      <a href="index.html">Home →</a>
+    </nav>
   </main>
 
   <script>
-    const cards = [
-      { es: 'la contraseña', en: 'password' },
-      { es: 'el buscador', en: 'search engine' },
-      { es: 'el cohete', en: 'rocket' },
-      { es: 'el ovni', en: 'UFO' },
-      { es: 'el ADN', en: 'DNA' },
-      { es: 'inalámbrico/a', en: 'wireless' },
-      { es: 'actualizar', en: 'to update' },
-      { es: 'navegar en la red', en: 'to surf the web' },
-      { es: 'el invento', en: 'invention' },
-      { es: 'a la vanguardia', en: 'at the forefront' }
+    function toggleEx(card) {
+      const ex = card.querySelector('.vocab-ex');
+      ex.style.display = ex.style.display === 'block' ? 'none' : 'block';
+    }
+
+    const questions = [
+      { en: "password", es: "la contraseña" },
+      { en: "search engine", es: "el buscador" },
+      { en: "rocket", es: "el cohete" },
+      { en: "UFO", es: "el ovni" },
+      { en: "DNA", es: "el ADN" },
+      { en: "wireless", es: "inalámbrico" },
+      { en: "to update", es: "actualizar" },
+      { en: "to download", es: "descargar" },
+      { en: "link", es: "el enlace" }
     ];
 
     let current = 0;
-    let flipped = false;
+    const pacoImg = document.getElementById('paco-img');
+    const promptText = document.getElementById('target-prompt');
+    const userInput = document.getElementById('user-input');
+    const feedback = document.getElementById('feedback');
+    const nextBtn = document.getElementById('next-btn');
 
-    const frontEl = document.getElementById('card-front');
-    const backEl = document.getElementById('card-back');
-    const counterEl = document.getElementById('fc-counter');
+    const SAD = "paco-sad.png";
+    const HAPPY = "paco-happy.png";
 
-    function updateCard() {
-      frontEl.style.display = 'block';
-      backEl.style.display = 'none';
-      frontEl.textContent = cards[current].es;
-      backEl.textContent = cards[current].en;
-      counterEl.textContent = `${current + 1} / ${cards.length}`;
-      flipped = false;
-    }
+    function checkAnswer() {
+      const attempt = userInput.value.trim().toLowerCase();
+      const correct = questions[current].es.toLowerCase();
 
-    function flipCard() {
-      if (!flipped) {
-        frontEl.style.display = 'none';
-        backEl.style.display = 'block';
-        flipped = true;
+      if (attempt === correct || attempt === correct.replace('la ', '').replace('el ', '')) {
+        pacoImg.src = HAPPY;
+        feedback.textContent = "¡Perfecto! Paco is happy.";
+        feedback.style.color = "var(--sage)";
+        nextBtn.style.display = "block";
       } else {
-        frontEl.style.display = 'block';
-        backEl.style.display = 'none';
-        flipped = false;
+        pacoImg.src = SAD;
+        feedback.textContent = "Try again! Paco is waiting...";
+        feedback.style.color = "var(--terracotta)";
       }
     }
 
-    function nextCard() { current = (current + 1) % cards.length; updateCard(); }
-    function prevCard() { current = (current - 1 + cards.length) % cards.length; updateCard(); }
+    function nextQuestion() {
+      current = (current + 1) % questions.length;
+      promptText.textContent = questions[current].en;
+      userInput.value = "";
+      feedback.textContent = "";
+      nextBtn.style.display = "none";
+      pacoImg.src = SAD;
+    }
 
-    updateCard();
+    userInput.addEventListener("keyup", (e) => { if (e.key === "Enter") checkAnswer(); });
   </script>
 </body>
 </html>
