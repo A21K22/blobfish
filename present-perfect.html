@@ -8,21 +8,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --cream: #F5F0E8; --ink: #1A1208; --terracotta: #C4522A; --gold: #D4A843; --sage: #5C7A5F; --accent: #C4522A; --accent-light: rgba(196,82,42,0.07); }
+    :root { 
+      --cream: #F5F0E8; 
+      --ink: #1A1208; 
+      --terracotta: #C4522A; 
+      --gold: #D4A843; 
+      --sage: #5C7A5F; 
+      --accent: #C4522A; 
+      --accent-light: rgba(196,82,42,0.07); 
+    }
     body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
     body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 70% 50% at 90% 10%, rgba(196,82,42,0.09) 0%, transparent 60%); pointer-events: none; z-index: 0; }
     
     nav { 
       position: fixed; 
-      top: 0; 
-      left: 0; 
-      right: 0; 
+      top: 0; left: 0; right: 0; 
       z-index: 100; 
       display: flex; 
       align-items: center; 
       justify-content: space-between; 
       padding: 1.2rem 3rem; 
-      /* Opacity changed to 0.75 */
       background: rgba(245,240,232,0.75); 
       backdrop-filter: blur(12px); 
       border-bottom: 1px solid rgba(26,18,8,0.08); 
@@ -34,87 +39,46 @@
     .nav-links a:hover { color: var(--terracotta); }
     .nav-links a.active { color: var(--terracotta); border-bottom: 1.5px solid var(--terracotta); padding-bottom: 2px; }
     
-    /* Increased top padding from 7rem to 11rem */
-    main { 
-      position: relative; 
-      z-index: 1; 
-      max-width: 860px; 
-      margin: 0 auto; 
-      padding: 11rem 2rem 5rem; 
-    }
+    main { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 11rem 2rem 5rem; }
 
-    /* Header */
-    .page-header { margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s; }
-    .page-tag { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
-    .page-tag::before { content: '01'; font-family: 'Playfair Display', serif; font-size: 1rem; opacity: 0.3; }
-    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.05; margin-bottom: 0.4rem; }
-    .h1-spanish { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: rgba(26,18,8,0.35); margin-bottom: 1rem; }
-    .page-intro { font-size: 1rem; color: rgba(26,18,8,0.6); max-width: 540px; line-height: 1.8; }
-
-    /* Section */
     .section { margin-bottom: 2.8rem; opacity: 0; animation: fadeUp 0.7s ease forwards; }
-    .section:nth-child(1){animation-delay:0.2s} .section:nth-child(2){animation-delay:0.3s}
-    .section:nth-child(3){animation-delay:0.4s} .section:nth-child(4){animation-delay:0.5s}
-    .section:nth-child(5){animation-delay:0.6s}
+    .section:nth-child(1){animation-delay:0.2s}
+    .section:nth-child(2){animation-delay:0.3s}
+    .section:nth-child(3){animation-delay:0.4s}
+
     .section-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(26,18,8,0.1); display: flex; align-items: center; gap: 0.6rem; }
     .section-title span { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-family: 'DM Sans', sans-serif; font-weight: 500; }
 
-    /* Formula */
     .formula-box { background: var(--accent); color: white; border-radius: 4px; padding: 1.4rem 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-    .formula-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; white-space: nowrap; }
-    .formula-parts { display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap; }
     .f-part { background: rgba(255,255,255,0.18); border-radius: 3px; padding: 0.45rem 0.9rem; font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; }
-    .f-plus { font-size: 1.1rem; opacity: 0.6; }
-    .f-example { font-size: 0.82rem; opacity: 0.75; margin-left: 0.5rem; font-style: italic; }
-
+    
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-
-    .conj-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .conj-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; background: white; border-radius: 4px; overflow: hidden; }
     .conj-table thead tr { background: var(--accent); color: white; }
-    .conj-table th { padding: 0.7rem 1rem; text-align: left; font-weight: 500; font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; }
-    .conj-table td { padding: 0.6rem 1rem; border-bottom: 1px solid rgba(26,18,8,0.06); }
-    .conj-table tbody tr:hover { background: var(--accent-light); }
-    .conj-table .pronoun { color: rgba(26,18,8,0.42); font-size: 0.83rem; }
-    .conj-table .hl { color: var(--accent); font-weight: 700; }
+    .conj-table th, .conj-table td { padding: 0.7rem 1rem; text-align: left; border-bottom: 1px solid rgba(26,18,8,0.06); }
+    .hl { color: var(--accent); font-weight: 700; }
 
-    .part-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; }
+    .part-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.85rem; }
     .part-card { background: white; border: 1px solid rgba(26,18,8,0.08); border-radius: 4px; padding: 0.9rem 1.1rem; }
     .part-card.irr { border-left: 3px solid var(--gold); }
-    .part-card .inf { font-size: 0.75rem; color: rgba(26,18,8,0.42); margin-bottom: 0.2rem; }
     .part-card .part { font-weight: 700; font-size: 0.97rem; color: var(--accent); }
-    .part-card .meaning { font-size: 0.73rem; color: rgba(26,18,8,0.38); margin-top: 0.15rem; font-style: italic; }
-    .irr-badge { font-size: 0.58rem; background: var(--gold); color: white; padding: 0.1rem 0.35rem; border-radius: 2px; letter-spacing: 0.08em; text-transform: uppercase; margin-left: 0.3rem; vertical-align: middle; }
+    .irr-badge { font-size: 0.58rem; background: var(--gold); color: white; padding: 0.1rem 0.35rem; border-radius: 2px; text-transform: uppercase; margin-left: 0.3rem; }
 
-    .markers { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-    .marker { background: white; border: 1px solid rgba(26,18,8,0.1); border-radius: 50px; padding: 0.3rem 0.85rem; font-size: 0.8rem; font-weight: 500; }
-    .marker.hl { background: var(--accent); color: white; border-color: var(--accent); }
+    /* Paco Practice Styling */
+    #quiz-container { background: white; border: 1px solid rgba(26,18,8,0.08); border-radius: 4px; padding: 2.5rem; text-align: center; }
+    .paco-avatar { width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--accent-light); margin-bottom: 1.5rem; object-fit: cover; }
+    .quiz-input { padding: 0.8rem 1.2rem; border: 1px solid rgba(26,18,8,0.2); border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 1rem; width: 100%; max-width: 250px; margin-bottom: 1rem; }
+    .quiz-btn { background: var(--accent); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: 700; }
 
-    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .compare-box { background: white; border: 1px solid rgba(26,18,8,0.08); border-radius: 4px; padding: 1.2rem 1.4rem; }
-    .compare-box h4 { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
-    .compare-box p { font-size: 0.84rem; color: rgba(26,18,8,0.6); line-height: 1.6; }
-    .compare-box .ex { margin-top: 0.4rem; font-style: italic; font-size: 0.82rem; color: var(--ink); }
-
-    .ex-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-    .ex-list li { background: white; border: 1px solid rgba(26,18,8,0.07); border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0; padding: 0.85rem 1.2rem; display: flex; flex-direction: column; gap: 0.18rem; }
-    .ex-list .es { font-weight: 500; font-size: 0.93rem; }
-    .ex-list .es strong { color: var(--accent); }
-    .ex-list .en { font-size: 0.79rem; color: rgba(26,18,8,0.42); font-style: italic; }
-
-    .page-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(26,18,8,0.1); opacity: 0; animation: fadeUp 0.7s ease forwards 0.75s; }
-    .page-nav a { text-decoration: none; color: var(--ink); font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
-    .page-nav a:hover { color: var(--terracotta); }
+    .page-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(26,18,8,0.1); }
+    .page-nav a { text-decoration: none; color: var(--ink); font-size: 0.85rem; font-weight: 500; }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 700px) { 
-      nav { padding: 1rem 1.5rem; } 
-      .nav-links { gap: 0.8rem; } 
-      .two-col, .compare-grid, .part-grid { grid-template-columns: 1fr; } 
-      main { padding-top: 9rem; }
-    }
+    @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } main { padding-top: 9rem; } }
   </style>
 </head>
 <body>
+
   <nav>
     <a href="index.html" class="nav-logo">Español</a>
     <ul class="nav-links">
@@ -126,119 +90,70 @@
   </nav>
 
   <main>
-    <header class="page-header">
+    <header class="section">
       <p class="page-tag">Section One</p>
-      <h1>Present <em style="font-style:italic;color:var(--terracotta)">Perfect</em></h1>
-      <p class="h1-spanish">Pretérito Perfecto</p>
-      <p class="page-intro">The present perfect describes past actions or experiences that have a connection to the present. It is formed with the present tense of <strong>haber</strong> + a past participle.</p>
+      <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.05; margin-bottom: 0.4rem;">Present <em style="font-style:italic;color:var(--terracotta)">Perfect</em></h1>
+      <p style="font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: rgba(26,18,8,0.35); margin-bottom: 1rem;">Pretérito Perfecto</p>
+      <p style="font-size: 1rem; color: rgba(26,18,8,0.6); max-width: 540px; line-height: 1.8;">The present perfect describes past actions or experiences connected to the present. It is formed with <strong>haber</strong> + a past participle.</p>
     </header>
 
     <div class="section">
-      <h2 class="section-title">Formula <span>How to form it</span></h2>
+      <h2 class="section-title">Formula <span>Structure</span></h2>
       <div class="formula-box">
-        <p class="formula-label">Structure</p>
         <div class="formula-parts">
           <div class="f-part">haber (present)</div>
-          <div class="f-plus">+</div>
+          <div style="font-size: 1.1rem; opacity: 0.6;">+</div>
           <div class="f-part">past participle</div>
-          <span class="f-example">→ "Yo he comido" (I have eaten)</span>
         </div>
       </div>
       <div class="two-col">
         <table class="conj-table">
-          <thead><tr><th>Subject</th><th>Haber (present)</th></tr></thead>
+          <thead><tr><th>Subject</th><th>Haber</th></tr></thead>
           <tbody>
-            <tr><td class="pronoun">yo</td><td class="hl">he</td></tr>
-            <tr><td class="pronoun">tú</td><td class="hl">has</td></tr>
-            <tr><td class="pronoun">él / ella / Ud.</td><td class="hl">ha</td></tr>
-            <tr><td class="pronoun">nosotros</td><td class="hl">hemos</td></tr>
-            <tr><td class="pronoun">vosotros</td><td class="hl">habéis</td></tr>
-            <tr><td class="pronoun">ellos / Uds.</td><td class="hl">han</td></tr>
+            <tr><td>yo</td><td class="hl">he</td></tr>
+            <tr><td>tú</td><td class="hl">has</td></tr>
+            <tr><td>él / ella</td><td class="hl">ha</td></tr>
+            <tr><td>nosotros</td><td class="hl">hemos</td></tr>
+            <tr><td>vosotros</td><td class="hl">habéis</td></tr>
+            <tr><td>ellos / Uds.</td><td class="hl">han</td></tr>
           </tbody>
         </table>
         <table class="conj-table">
-          <thead><tr><th>Verb ending</th><th>Regular Participle ending</th></tr></thead>
-            <tbody>
-              <tr><td>-AR verbs</td><td class="hl">→ -ado</td></tr>
-              <tr><td>hablar</td><td class = "h1"> → habl<strong>ado</strong></td></tr>
-              <tr><td>-ER verbs</td><td class="hl">→ -ido</td></tr>
-              <tr><td>comer</td><td class = "h1"> → com<strong>ido</strong></td></tr>
-              <tr><td>-IR verbs</td><td class="hl">→ -ido</td></tr>
-              <tr><td>vivir</td><td class = "h1"> → viv<strong>ido</strong></td></tr>
-            </tbody>
+          <thead><tr><th>Ending</th><th>Participle</th></tr></thead>
+          <tbody>
+            <tr><td>-AR verbs</td><td class="hl">-ado</td></tr>
+            <tr><td>-ER verbs</td><td class="hl">-ido</td></tr>
+            <tr><td>-IR verbs</td><td class="hl">-ido</td></tr>
+          </tbody>
         </table>
       </div>
     </div>
 
     <div class="section">
-      <h2 class="section-title">When to Use It <span>Key uses</span></h2>
-      <div class="compare-grid">
-        <div class="compare-box">
-          <h4>Recent past actions</h4>
-          <p>Actions that happened recently, often today or this week.</p>
-          <p class="ex">→ "He comido pizza hoy." (I have eaten pizza today.)</p>
-        </div>
-        <div class="compare-box">
-          <h4>Life experiences</h4>
-          <p>Things you have (or have never) done in your life, with no specific time.</p>
-          <p class="ex">→ "Nunca he visto esa película." (I have never seen that film.)</p>
-        </div>
-        <div class="compare-box">
-          <h4>Repeated past actions</h4>
-          <p>Actions that have happened multiple times up to now.</p>
-          <p class="ex">→ "He viajado a España tres veces." (I have traveled to Spain three times.)</p>
-        </div>
-        <div class="compare-box">
-          <h4>Actions with present result</h4>
-          <p>A past action whose result is still felt or relevant now.</p>
-          <p class="ex">→ "She has broken her leg." → "Se ha roto la pierna."</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2 class="section-title">Irregular Participles <span>Must memorize</span></h2>
+      <h2 class="section-title">Irregulars <span>Memorize These</span></h2>
       <div class="part-grid">
-        <div class="part-card irr"><p class="inf">abrir</p><p class="part">abierto <span class="irr-badge">irr</span></p><p class="meaning">opened</p></div>
-        <div class="part-card irr"><p class="inf">decir</p><p class="part">dicho <span class="irr-badge">irr</span></p><p class="meaning">said</p></div>
-        <div class="part-card irr"><p class="inf">escribir</p><p class="part">escrito <span class="irr-badge">irr</span></p><p class="meaning">written</p></div>
-        <div class="part-card irr"><p class="inf">hacer</p><p class="part">hecho <span class="irr-badge">irr</span></p><p class="meaning">done / made</p></div>
-        <div class="part-card irr"><p class="inf">morir</p><p class="part">muerto <span class="irr-badge">irr</span></p><p class="meaning">died</p></div>
-        <div class="part-card irr"><p class="inf">poner</p><p class="part">puesto <span class="irr-badge">irr</span></p><p class="meaning">put / placed</p></div>
-        <div class="part-card irr"><p class="inf">romper</p><p class="part">roto <span class="irr-badge">irr</span></p><p class="meaning">broken</p></div>
-        <div class="part-card irr"><p class="inf">ver</p><p class="part">visto <span class="irr-badge">irr</span></p><p class="meaning">seen</p></div>
-        <div class="part-card irr"><p class="inf">volver</p><p class="part">vuelto <span class="irr-badge">irr</span></p><p class="meaning">returned</p></div>
+        <div class="part-card irr"><p style="font-size: 0.75rem; color: rgba(0,0,0,0.4)">hacer</p><p class="part">hecho <span class="irr-badge">irr</span></p></div>
+        <div class="part-card irr"><p style="font-size: 0.75rem; color: rgba(0,0,0,0.4)">decir</p><p class="part">dicho <span class="irr-badge">irr</span></p></div>
+        <div class="part-card irr"><p style="font-size: 0.75rem; color: rgba(0,0,0,0.4)">ver</p><p class="part">visto <span class="irr-badge">irr</span></p></div>
+        <div class="part-card irr"><p style="font-size: 0.75rem; color: rgba(0,0,0,0.4)">escribir</p><p class="part">escrito <span class="irr-badge">irr</span></p></div>
+        <div class="part-card irr"><p style="font-size: 0.75rem; color: rgba(0,0,0,0.4)">volver</p><p class="part">vuelto <span class="irr-badge">irr</span></p></div>
+        <div class="part-card irr"><p style="font-size: 0.75rem; color: rgba(0,0,0,0.4)">abrir</p><p class="part">abierto <span class="irr-badge">irr</span></p></div>
       </div>
     </div>
 
     <div class="section">
-      <h2 class="section-title">Time Markers <span>Clue words</span></h2>
-      <div class="markers">
-        <span class="marker hl">hoy (today)</span>
-        <span class="marker hl">esta semana (this week)</span>
-        <span class="marker hl">este mes (this month)</span>
-        <span class="marker hl">este año (this year)</span>
-        <span class="marker">ya (already)</span>
-        <span class="marker">todavía no (not yet)</span>
-        <span class="marker">alguna vez (ever)</span>
-        <span class="marker">nunca (never)</span>
-        <span class="marker">siempre (always)</span>
-        <span class="marker">recientemente (recently)</span>
-        <span class="marker">últimamente (lately)</span>
-        <span class="marker">esta mañana (this morning)</span>
+      <h2 class="section-title">Practice with Paco <span>Test your skills</span></h2>
+      <div id="quiz-container">
+        <img id="paco-img" src="paco-sad.png" class="paco-avatar" alt="Paco">
+        <h3 id="target-prompt" style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--terracotta); margin-bottom: 1.5rem;">Yo / Hablar</h3>
+        
+        <input type="text" id="user-input" class="quiz-input" placeholder="Type answer...">
+        <br>
+        <button onclick="checkAnswer()" class="quiz-btn">Check Answer</button>
+        
+        <p id="feedback" style="margin-top: 1rem; font-weight: 500; min-height: 1.2rem;"></p>
+        <button id="next-btn" onclick="nextQuestion()" style="display: none; margin: 1rem auto 0; background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; cursor: pointer;">Next Question</button>
       </div>
-    </div>
-
-    <div class="section">
-      <h2 class="section-title">Examples <span>In context</span></h2>
-      <ul class="ex-list">
-        <li><span class="es">Yo <strong>he comido</strong> tacos hoy.</span><span class="en">I have eaten tacos today.</span></li>
-        <li><span class="es">¿Tú <strong>has visto</strong> esa película?</span><span class="en">Have you seen that movie?</span></li>
-        <li><span class="es">Ella <strong>ha escrito</strong> tres cartas esta semana.</span><span class="en">She has written three letters this week.</span></li>
-        <li><span class="es">Nosotros <strong>hemos viajado</strong> a España dos veces.</span><span class="en">We have traveled to Spain twice.</span></li>
-        <li><span class="es">Ellos <strong>han hecho</strong> la tarea.</span><span class="en">They have done the homework.</span></li>
-        <li><span class="es">Nunca <strong>he probado</strong> el ceviche.</span><span class="en">I have never tried ceviche.</span></li>
-      </ul>
     </div>
 
     <nav class="page-nav">
@@ -246,5 +161,54 @@
       <a href="past-perfect.html">Past Perfect →</a>
     </nav>
   </main>
+
+  <script>
+    const questions = [
+      { prompt: "Yo / Hablar", answer: "he hablado" },
+      { prompt: "Tú / Comer", answer: "has comido" },
+      { prompt: "Él / Ver", answer: "ha visto" },
+      { prompt: "Nosotros / Escribir", answer: "hemos escrito" },
+      { prompt: "Ellos / Hacer", answer: "han hecho" },
+      { prompt: "Ella / Abrir", answer: "ha abierto" }
+    ];
+
+    let current = 0;
+    const pacoImg = document.getElementById('paco-img');
+    const promptText = document.getElementById('target-prompt');
+    const userInput = document.getElementById('user-input');
+    const feedback = document.getElementById('feedback');
+    const nextBtn = document.getElementById('next-btn');
+
+    // Case-sensitive filenames for GitHub/Vercel
+    const SAD = "paco-sad.png";
+    const HAPPY = "paco-happy.png";
+
+    function checkAnswer() {
+      const attempt = userInput.value.trim().toLowerCase();
+      const correct = questions[current].answer.toLowerCase();
+
+      if (attempt === correct) {
+        pacoImg.src = HAPPY;
+        feedback.textContent = "¡Perfecto! Paco is happy.";
+        feedback.style.color = "var(--sage)";
+        nextBtn.style.display = "block";
+      } else {
+        pacoImg.src = SAD;
+        feedback.textContent = "Not quite. Paco is waiting...";
+        feedback.style.color = "var(--terracotta)";
+      }
+    }
+
+    function nextQuestion() {
+      current = (current + 1) % questions.length;
+      promptText.textContent = questions[current].prompt;
+      userInput.value = "";
+      feedback.textContent = "";
+      nextBtn.style.display = "none";
+      pacoImg.src = SAD;
+    }
+
+    userInput.addEventListener("keyup", (e) => { if (e.key === "Enter") checkAnswer(); });
+  </script>
 </body>
 </html>
