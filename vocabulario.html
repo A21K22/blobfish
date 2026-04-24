@@ -23,9 +23,9 @@
       color: var(--ink);
       font-family: 'DM Sans', sans-serif;
       min-height: 100vh;
+      line-height: 1.6;
     }
 
-    /* NAV: Set to 0.75 opacity */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -36,108 +36,93 @@
       padding: 1.2rem 3rem;
       background: rgba(245, 240, 232, 0.75); 
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(26,18,8,0.08);
     }
 
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-style: italic;
-      color: var(--terracotta);
-      text-decoration: none;
-    }
-
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--terracotta); text-decoration: none; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--ink);
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
+    .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+    .nav-links a.active { color: var(--gold-dark); border-bottom: 1.5px solid var(--gold-dark); padding-bottom: 2px; }
 
     main {
-      position: relative;
-      z-index: 1;
-      max-width: 920px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 9rem 2rem 5rem; /* Increased top padding for better spacing from Nav */
+      padding: 10rem 2rem 5rem;
     }
 
-    .page-header {
-      margin-bottom: 4rem;
-      opacity: 0;
-      animation: fadeUp 0.7s ease forwards 0.1s;
-    }
-
-    /* SECTION TAG: Increased indent/spacing to 2rem */
+    /* HEADER STYLING MATCHING IMAGE */
     .page-tag {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold-dark);
-      margin-bottom: 2rem; 
+      margin-bottom: 2rem; /* The Indent */
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 1rem;
     }
 
-    .page-tag::before {
-      content: '03';
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      opacity: 0.3;
-    }
+    .page-tag span { opacity: 0.4; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(3rem, 7vw, 5.5rem);
       font-weight: 900;
-      line-height: 1.05;
-      margin-bottom: 1rem;
+      line-height: 0.9;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
     }
 
-    .vocab-section { margin-bottom: 3rem; }
+    h1 em { font-style: italic; font-weight: 400; color: var(--ink); }
+
+    .header-sub { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .header-desc { font-size: 1rem; color: rgba(26,18,8,0.7); max-width: 800px; margin-bottom: 4rem; }
+
+    /* CONTENT SECTIONS */
+    .vocab-section { margin-bottom: 4rem; opacity: 0; animation: fadeUp 0.8s ease forwards; }
     .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-dark); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;
     }
     .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(26,18,8,0.1); }
 
-    .vocab-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 0.75rem;
-    }
-
+    .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
     .vocab-card {
-      background: white;
-      border: 1px solid rgba(26,18,8,0.08);
-      border-radius: 4px;
-      padding: 1rem 1.2rem;
-      transition: transform 0.2s;
+      background: white; border: 1px solid rgba(26,18,8,0.08); padding: 1.25rem;
+      transition: all 0.3s ease; position: relative;
     }
+    .vocab-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(26,18,8,0.06); }
+    .vocab-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--accent); transform: scaleX(0); transition: 0.3s; }
+    .vocab-card:hover::after { transform: scaleX(1); }
 
-    .vocab-es { font-weight: 700; font-size: 1rem; color: var(--ink); }
-    .vocab-en { font-size: 0.8rem; color: rgba(26,18,8,0.45); font-style: italic; }
+    .vocab-es { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.2rem; }
+    .vocab-en { font-size: 0.85rem; color: rgba(26,18,8,0.5); font-style: italic; }
 
-    .phrase-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .phrase-list { display: flex; flex-direction: column; gap: 0.8rem; }
     .phrase-item {
-      background: white; border-left: 3px solid var(--accent);
-      padding: 0.8rem 1.2rem; display: grid; grid-template-columns: 1fr 1fr;
+      background: white; border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem;
+      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
     }
+    .phrase-es { font-weight: 600; font-size: 1rem; }
+    .phrase-en { color: rgba(26,18,8,0.45); font-style: italic; }
+
+    /* FLASHCARDS */
+    .flashcard-zone {
+      background: white; border: 1px solid rgba(26,18,8,0.1); padding: 3rem;
+      text-align: center; margin-top: 5rem; border-radius: 4px;
+    }
+    .flashcard {
+      background: var(--cream); border: 2px solid rgba(26,18,8,0.05); padding: 3rem;
+      min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      cursor: pointer; margin-bottom: 2rem;
+    }
+    .card-front, .card-back { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
+    .card-back { display: none; color: var(--terracotta); }
+    .fc-btn { background: var(--ink); color: white; border: none; padding: 1rem 2rem; cursor: pointer; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -147,17 +132,23 @@
     <a href="index.html" class="nav-logo">Español</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="vocabulario.html" style="color:var(--gold-dark); border-bottom: 1.5px solid var(--gold-dark);">Vocabulary</a></li>
+      <li><a href="present-perfect.html">Present Perfect</a></li>
+      <li><a href="past-perfect.html">Past Perfect</a></li>
+      <li><a href="vocabulario.html" class="active">Vocabulary</a></li>
     </ul>
   </nav>
 
   <main>
-     <header class="page-header">
-      <p class="page-tag">Section Three</p>
-      <h1>Vocabulary <em style="font-style:italic;color:var(--sage)">Section 8</em></h1>
-      <p class="h1-spanish">Ciencias y Technologías</p>
-      <p class="page-intro">The past perfect describes an action that was <strong>already completed before another past event</strong>. It is the "past of the past." Formed with the <em>imperfect</em> of <strong>haber</strong> + a past participle.</p>
+    <header class="page-header">
+      <p class="page-tag"><span>03</span> SECTION THREE</p>
+      <h1>Vocabulary <em>Section 3</em></h1>
+      <p class="header-sub">Ciencias y Technologías</p>
+      <p class="header-desc">
+        The past perfect describes an action that was <strong>already completed before another past event</strong>. 
+        It is the "past of the past." Formed with the <em>imperfect</em> of <strong>haber</strong> + a past participle.
+      </p>
     </header>
+
     <div class="vocab-section">
       <p class="section-label">Verbos</p>
       <div class="vocab-grid">
@@ -187,14 +178,12 @@
       <p class="section-label">Sustantivos</p>
       <div class="vocab-grid">
         <div class="vocab-card"><p class="vocab-es">la arroba</p><p class="vocab-en">@ symbol</p></div>
-        <div class="vocab-card"><p class="vocab-es">el blog</p><p class="vocab-en">blog</p></div>
+        <div class="vocab-card"><p class="vocab-es">el blog / la bitácora</p><p class="vocab-en">blog</p></div>
         <div class="vocab-card"><p class="vocab-es">el buscador</p><p class="vocab-en">search engine</p></div>
         <div class="vocab-card"><p class="vocab-es">la computadora portátil</p><p class="vocab-en">laptop</p></div>
         <div class="vocab-card"><p class="vocab-es">la contraseña</p><p class="vocab-en">password</p></div>
         <div class="vocab-card"><p class="vocab-es">el corrector ortográfico</p><p class="vocab-en">spell checker</p></div>
-        <div class="vocab-card"><p class="vocab-es">el correo electrónico</p><p class="vocab-en">e-mail address</p></div>
         <div class="vocab-card"><p class="vocab-es">la informática</p><p class="vocab-en">computer science</p></div>
-        <div class="vocab-card"><p class="vocab-es">Internet</p><p class="vocab-en">Internet</p></div>
         <div class="vocab-card"><p class="vocab-es">el mensaje</p><p class="vocab-en">message</p></div>
         <div class="vocab-card"><p class="vocab-es">la página web</p><p class="vocab-en">web page</p></div>
         <div class="vocab-card"><p class="vocab-es">el programa</p><p class="vocab-en">software</p></div>
@@ -211,6 +200,8 @@
         <div class="vocab-card"><p class="vocab-es">el planeta</p><p class="vocab-en">planet</p></div>
         <div class="vocab-card"><p class="vocab-es">el telescopio</p><p class="vocab-en">telescope</p></div>
         <div class="vocab-card"><p class="vocab-es">el transbordador</p><p class="vocab-en">shuttle</p></div>
+        <div class="vocab-card"><p class="vocab-es">el/la astronauta</p><p class="vocab-en">astronaut</p></div>
+        <div class="vocab-card"><p class="vocab-es">el/la científico/a</p><p class="vocab-en">scientist</p></div>
         <div class="vocab-card"><p class="vocab-es">el ADN</p><p class="vocab-en">DNA</p></div>
         <div class="vocab-card"><p class="vocab-es">el avance</p><p class="vocab-en">breakthrough</p></div>
         <div class="vocab-card"><p class="vocab-es">la célula</p><p class="vocab-en">cell</p></div>
@@ -224,7 +215,6 @@
         <div class="vocab-card"><p class="vocab-es">la guita / la plata</p><p class="vocab-en">money</p></div>
         <div class="vocab-card"><p class="vocab-es">el/la vago/a</p><p class="vocab-en">slacker</p></div>
         <div class="vocab-card"><p class="vocab-es">vos</p><p class="vocab-en">you</p></div>
-        <div class="vocab-card"><p class="vocab-es">la bitácora</p><p class="vocab-en">blog</p></div>
         <div class="vocab-card"><p class="vocab-es">el enlace</p><p class="vocab-en">link</p></div>
         <div class="vocab-card"><p class="vocab-es">el usuario</p><p class="vocab-en">user</p></div>
         <div class="vocab-card"><p class="vocab-es">la motosierra</p><p class="vocab-en">chainsaw</p></div>
@@ -239,8 +229,12 @@
         <div class="vocab-card"><p class="vocab-es">en línea</p><p class="vocab-en">online</p></div>
         <div class="vocab-card"><p class="vocab-es">inalámbrico/a</p><p class="vocab-en">wireless</p></div>
         <div class="vocab-card"><p class="vocab-es">avanzado/a</p><p class="vocab-en">advanced</p></div>
+        <div class="vocab-card"><p class="vocab-es">especializado/a</p><p class="vocab-en">specialized</p></div>
         <div class="vocab-card"><p class="vocab-es">ético/a</p><p class="vocab-en">ethical</p></div>
         <div class="vocab-card"><p class="vocab-es">innovador(a)</p><p class="vocab-en">innovative</p></div>
+        <div class="vocab-card"><p class="vocab-es">revolucionario/a</p><p class="vocab-en">revolutionary</p></div>
+        <div class="vocab-card"><p class="vocab-es">duro/a</p><p class="vocab-en">hard / difficult</p></div>
+        <div class="vocab-card"><p class="vocab-es">apagado/a</p><p class="vocab-en">off</p></div>
       </div>
     </div>
 
@@ -252,6 +246,52 @@
         <div class="phrase-item"><span class="phrase-es">A la vanguardia.</span><span class="phrase-en">At the forefront.</span></div>
       </div>
     </div>
+
+    <div class="flashcard-zone">
+      <div class="flashcard" id="flashcard" onclick="flipCard()">
+        <div class="card-front" id="card-front">la arroba</div>
+        <div class="card-back" id="card-back">@ symbol</div>
+        <p style="margin-top:2rem; font-size:0.7rem; letter-spacing:0.1em; opacity:0.4;">CLICK TO REVEAL</p>
+      </div>
+      <button class="fc-btn" onclick="nextCard()">Next Word</button>
+    </div>
   </main>
+
+  <script>
+    const cards = [
+      { es: 'la arroba', en: '@ symbol' },
+      { es: 'el cohete', en: 'rocket' },
+      { es: 'el desafío', en: 'challenge' },
+      { es: 'clonar', en: 'to clone' },
+      { es: 'la guita', en: 'money' },
+      { es: 'inalámbrico/a', en: 'wireless' }
+    ];
+
+    let current = 0;
+    let flipped = false;
+    const frontEl = document.getElementById('card-front');
+    const backEl = document.getElementById('card-back');
+
+    function updateCard() {
+      frontEl.style.display = 'block';
+      backEl.style.display = 'none';
+      frontEl.textContent = cards[current].es;
+      backEl.textContent = cards[current].en;
+      flipped = false;
+    }
+
+    function flipCard() {
+      if (!flipped) {
+        frontEl.style.display = 'none';
+        backEl.style.display = 'block';
+        flipped = true;
+      } else {
+        updateCard();
+      }
+    }
+
+    function nextCard() { current = (current + 1) % cards.length; updateCard(); }
+    updateCard();
+  </script>
 </body>
 </html>
