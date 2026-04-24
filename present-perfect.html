@@ -49,7 +49,30 @@
     .section-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(26,18,8,0.1); display: flex; align-items: center; gap: 0.6rem; }
     .section-title span { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-family: 'DM Sans', sans-serif; font-weight: 500; }
 
-    .formula-box { background: var(--accent); color: white; border-radius: 4px; padding: 1.4rem 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    /* Header Controls (Arrows) */
+    .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .page-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(26,18,8,0.5); }
+    .header-nav-btns { display: flex; gap: 0.5rem; }
+    .header-nav-btns a { text-decoration: none; width: 32px; height: 32px; border: 1px solid rgba(26,18,8,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink); font-size: 0.9rem; transition: all 0.2s; }
+    .header-nav-btns a:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+    /* Formula Box - Forced one-line layout */
+    .formula-box { 
+      background: var(--accent); 
+      color: white; 
+      border-radius: 4px; 
+      padding: 1.4rem 1.8rem; 
+      margin-bottom: 1.5rem; 
+      display: flex; 
+      align-items: center; 
+      gap: 1.5rem; 
+    }
+    .formula-parts { 
+      display: flex; 
+      align-items: center; 
+      gap: 1rem; 
+      white-space: nowrap; /* THE FIX: Stops the elements from breaking into two lines */
+    }
     .f-part { background: rgba(255,255,255,0.18); border-radius: 3px; padding: 0.45rem 0.9rem; font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; }
     
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -66,7 +89,14 @@
 
     /* Paco Practice Styling */
     #quiz-container { background: white; border: 1px solid rgba(26,18,8,0.08); border-radius: 4px; padding: 2.5rem; text-align: center; }
-    .paco-avatar { width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--accent-light); margin-bottom: 1.5rem; object-fit: cover; }
+    .paco-avatar { 
+      width: 150px; 
+      height: 150px; 
+      border-radius: 50%; 
+      border: 4px solid var(--accent-light); 
+      margin-bottom: 1.5rem; 
+      object-fit: cover; 
+    }
     .quiz-input { padding: 0.8rem 1.2rem; border: 1px solid rgba(26,18,8,0.2); border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 1rem; width: 100%; max-width: 250px; margin-bottom: 1rem; }
     .quiz-btn { background: var(--accent); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: 700; }
 
@@ -91,13 +121,19 @@
 
   <main>
     <header class="section">
-      <p class="page-tag">Section One</p>
+      <div class="header-top">
+        <p class="page-tag">Section One</p>
+        <div class="header-nav-btns">
+          <a href="index.html" title="Back">←</a>
+          <a href="past-perfect.html" title="Next">→</a>
+        </div>
+      </div>
       <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.05; margin-bottom: 0.4rem;">Present <em style="font-style:italic;color:var(--terracotta)">Perfect</em></h1>
       <p style="font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: rgba(26,18,8,0.35); margin-bottom: 1rem;">Pretérito Perfecto</p>
       <p style="font-size: 1rem; color: rgba(26,18,8,0.6); max-width: 540px; line-height: 1.8;">The present perfect describes past actions or experiences connected to the present. It is formed with <strong>haber</strong> + a past participle.</p>
     </header>
 
-     <div class="section">
+    <div class="section">
       <h2 class="section-title">Formula <span>Structure</span></h2>
       <div class="formula-box">
         <div class="formula-parts">
@@ -179,7 +215,6 @@
     const feedback = document.getElementById('feedback');
     const nextBtn = document.getElementById('next-btn');
 
-    // Case-sensitive filenames for GitHub/Vercel
     const SAD = "paco-sad.png";
     const HAPPY = "paco-happy.png";
 
