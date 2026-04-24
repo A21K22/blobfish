@@ -16,74 +16,48 @@
       --gold: #D4A843; 
       --sage: #5C7A5F; 
       --accent: #C4522A; 
-      --accent-light: rgba(196,82,42,0.07); 
     }
 
-    body { 
-      background: var(--cream); 
-      color: var(--ink); 
-      font-family: 'DM Sans', sans-serif; 
-      min-height: 100vh; 
-    }
-
-    body::before { 
-      content: ''; 
-      position: fixed; 
-      inset: 0; 
-      background: radial-gradient(ellipse 70% 50% at 90% 10%, rgba(196,82,42,0.09) 0%, transparent 60%); 
-      pointer-events: none; 
-      z-index: 0; 
-    }
+    body { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+    body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 70% 50% at 90% 10%, rgba(196,82,42,0.09) 0%, transparent 60%); pointer-events: none; z-index: 0; }
     
-    nav { 
-      position: fixed; 
-      top: 0; left: 0; right: 0; 
-      z-index: 100; 
-      display: flex; 
-      align-items: center; 
-      justify-content: space-between; 
-      padding: 1.2rem 3rem; 
-      background: rgba(245,240,232,0.75); 
-      backdrop-filter: blur(12px); 
-      border-bottom: 1px solid rgba(26,18,8,0.08); 
-    }
-    
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(245,240,232,0.75); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,18,8,0.08); }
     .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--terracotta); text-decoration: none; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--terracotta); }
+    .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; }
     .nav-links a.active { color: var(--terracotta); border-bottom: 1.5px solid var(--terracotta); padding-bottom: 2px; }
     
-    main { 
-      position: relative; 
-      z-index: 1; 
-      max-width: 860px; 
-      margin: 0 auto; 
-      padding: 11rem 2rem 5rem; 
-    }
+    main { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 11rem 2rem 5rem; }
 
     .section { margin-bottom: 3.5rem; opacity: 0; animation: fadeUp 0.7s ease forwards; }
     .section:nth-child(1){animation-delay:0.1s}
-    .section:nth-child(2){animation-delay:0.2s}
-    .section:nth-child(3){animation-delay:0.3s}
-
     .section-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(26,18,8,0.1); display: flex; align-items: center; gap: 0.6rem; }
     .section-title span { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-family: 'DM Sans', sans-serif; font-weight: 500; }
 
-    /* Formula Box Fix */
+    /* FINAL FORMULA FIX */
     .formula-box { 
       background: var(--accent); 
       color: white; 
       border-radius: 4px; 
       padding: 1.4rem 1.8rem; 
       margin-bottom: 1.5rem; 
+      display: flex;
+      justify-content: flex-start;
+    }
+    .formula-parts { 
       display: flex; 
       align-items: center; 
-      gap: 1.5rem; 
-      flex-wrap: nowrap; 
+      gap: 1rem; 
+      flex-wrap: nowrap; /* Absolutely no wrapping */
     }
-    .formula-parts { display: flex; align-items: center; gap: 0.9rem; white-space: nowrap; }
-    .f-part { background: rgba(255,255,255,0.18); border-radius: 3px; padding: 0.45rem 0.9rem; font-family: 'Playfair Display', serif; font-weight: 700; }
+    .f-part { 
+      background: rgba(255,255,255,0.18); 
+      border-radius: 3px; 
+      padding: 0.45rem 0.9rem; 
+      font-family: 'Playfair Display', serif; 
+      font-weight: 700;
+      white-space: nowrap;
+    }
     
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .conj-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; background: white; border-radius: 4px; overflow: hidden; }
@@ -91,14 +65,12 @@
     .conj-table th, .conj-table td { padding: 0.7rem 1rem; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.05); }
     .hl { color: var(--accent); font-weight: 700; }
 
-    /* Participles Grid */
     .part-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.85rem; }
     .part-card { background: white; border: 1px solid rgba(26,18,8,0.08); border-radius: 4px; padding: 0.9rem 1.1rem; }
     .part-card.irr { border-left: 3px solid var(--gold); }
     .part-card .part { font-weight: 700; color: var(--accent); }
     .irr-badge { font-size: 0.58rem; background: var(--gold); color: white; padding: 0.1rem 0.35rem; border-radius: 2px; text-transform: uppercase; margin-left: 0.3rem; }
 
-    /* Paco Practice Styling - Reverted to "Creepy" Zoom */
     #quiz-container { background: white; border: 1px solid rgba(26,18,8,0.08); border-radius: 4px; padding: 2.5rem; text-align: center; }
     .paco-avatar { 
       width: 150px; 
@@ -106,18 +78,16 @@
       border-radius: 50%; 
       border: 4px solid var(--cream); 
       margin-bottom: 1.5rem; 
-      object-fit: cover; /* Original close-up crop */
-      transition: transform 0.3s ease;
+      object-fit: cover; /* Back to creepy zoom */
     }
     .quiz-input { padding: 0.8rem 1.2rem; border: 1px solid rgba(26,18,8,0.2); border-radius: 4px; font-family: inherit; font-size: 1rem; width: 100%; max-width: 250px; margin-bottom: 1rem; outline: none; }
-    .quiz-input:focus { border-color: var(--accent); }
     .quiz-btn { background: var(--accent); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 4px; font-weight: 700; cursor: pointer; }
 
     .page-nav { display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(26,18,8,0.1); }
     .page-nav a { text-decoration: none; color: var(--ink); font-weight: 500; }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } main { padding-top: 9rem; } }
+    @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } main { padding-top: 9rem; } .formula-parts { flex-wrap: wrap; } }
   </style>
 </head>
 <body>
@@ -135,13 +105,9 @@
   <main>
     <header class="section">
       <p class="page-tag">Section One</p>
-      <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.05; margin-bottom: 0.4rem;">
-        Present <em style="font-style:italic;color:var(--terracotta)">Perfect</em>
-      </h1>
+      <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.05; margin-bottom: 0.4rem;">Present <em style="font-style:italic;color:var(--terracotta)">Perfect</em></h1>
       <p style="font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: rgba(26,18,8,0.35); margin-bottom: 1rem;">Pretérito Perfecto</p>
-      <p style="font-size: 1rem; color: rgba(26,18,8,0.6); max-width: 540px; line-height: 1.8;">
-        The present perfect describes past actions or experiences connected to the present. Formed with <strong>haber</strong> + a past participle.
-      </p>
+      <p style="font-size: 1rem; color: rgba(26,18,8,0.6); max-width: 540px; line-height: 1.8;">Formed with <strong>haber</strong> + a past participle.</p>
     </header>
 
     <div class="section">
@@ -149,7 +115,7 @@
       <div class="formula-box">
         <div class="formula-parts">
           <div class="f-part">haber (present)</div>
-          <span style="opacity:0.5; font-weight: bold;">+</span>
+          <span style="font-size: 1.2rem; font-weight: bold;">+</span>
           <div class="f-part">past participle</div>
         </div>
       </div>
@@ -177,36 +143,17 @@
     </div>
 
     <div class="section">
-      <h2 class="section-title">Irregulars <span>Must memorize</span></h2>
-      <div class="part-grid">
-        <div class="part-card irr"><p style="font-size:0.75rem; color:rgba(0,0,0,0.4)">hacer</p><p class="part">hecho <span class="irr-badge">irr</span></p></div>
-        <div class="part-card irr"><p style="font-size:0.75rem; color:rgba(0,0,0,0.4)">decir</p><p class="part">dicho <span class="irr-badge">irr</span></p></div>
-        <div class="part-card irr"><p style="font-size:0.75rem; color:rgba(0,0,0,0.4)">ver</p><p class="part">visto <span class="irr-badge">irr</span></p></div>
-        <div class="part-card irr"><p style="font-size:0.75rem; color:rgba(0,0,0,0.4)">escribir</p><p class="part">escrito <span class="irr-badge">irr</span></p></div>
-        <div class="part-card irr"><p style="font-size:0.75rem; color:rgba(0,0,0,0.4)">volver</p><p class="part">vuelto <span class="irr-badge">irr</span></p></div>
-        <div class="part-card irr"><p style="font-size:0.75rem; color:rgba(0,0,0,0.4)">abrir</p><p class="part">abierto <span class="irr-badge">irr</span></p></div>
-      </div>
-    </div>
-
-    <div class="section">
       <h2 class="section-title">Practice with Paco <span>Test your skills</span></h2>
       <div id="quiz-container">
-        <img id="paco-img" src="paco-sad.png" class="paco-avatar" alt="Paco Tutor">
+        <img id="paco-img" src="paco-sad.png" class="paco-avatar" alt="Paco">
         <h3 id="target-prompt" style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--terracotta); margin-bottom: 1.5rem;">Yo / Hablar</h3>
-        
-        <input type="text" id="user-input" class="quiz-input" placeholder="Type answer here...">
+        <input type="text" id="user-input" class="quiz-input" placeholder="Type answer...">
         <br>
         <button onclick="checkAnswer()" class="quiz-btn">Check Answer</button>
-        
         <p id="feedback" style="margin-top: 1.5rem; font-weight: 500; min-height: 1.2rem;"></p>
         <button id="next-btn" onclick="nextQuestion()" style="display:none; margin: 1rem auto 0; background:none; border:1px solid var(--accent); color:var(--accent); padding:0.4rem 1rem; border-radius:50px; cursor:pointer;">Next Question</button>
       </div>
     </div>
-
-    <nav class="page-nav">
-      <a href="index.html">← Home</a>
-      <a href="past-perfect.html">Past Perfect →</a>
-    </nav>
   </main>
 
   <script>
@@ -214,11 +161,8 @@
       { prompt: "Yo / Hablar", answer: "he hablado" },
       { prompt: "Tú / Comer", answer: "has comido" },
       { prompt: "Él / Ver", answer: "ha visto" },
-      { prompt: "Nosotros / Escribir", answer: "hemos escrito" },
-      { prompt: "Ellos / Hacer", answer: "han hecho" },
-      { prompt: "Ella / Abrir", answer: "ha abierto" }
+      { prompt: "Nosotros / Escribir", answer: "hemos escrito" }
     ];
-
     let current = 0;
     const pacoImg = document.getElementById('paco-img');
     const promptText = document.getElementById('target-prompt');
@@ -226,20 +170,14 @@
     const feedback = document.getElementById('feedback');
     const nextBtn = document.getElementById('next-btn');
 
-    const SAD = "paco-sad.png";
-    const HAPPY = "paco-happy.png";
-
     function checkAnswer() {
-      const attempt = userInput.value.trim().toLowerCase();
-      const correct = questions[current].answer.toLowerCase();
-
-      if (attempt === correct) {
-        pacoImg.src = HAPPY;
-        feedback.textContent = "¡Perfecto! Paco is proud of you.";
+      if (userInput.value.trim().toLowerCase() === questions[current].answer) {
+        pacoImg.src = "paco-happy.png";
+        feedback.textContent = "¡Perfecto! Paco is proud.";
         feedback.style.color = "var(--sage)";
         nextBtn.style.display = "block";
       } else {
-        pacoImg.src = SAD;
+        pacoImg.src = "paco-sad.png";
         feedback.textContent = "Not quite. Paco is watching...";
         feedback.style.color = "var(--terracotta)";
       }
@@ -251,12 +189,9 @@
       userInput.value = "";
       feedback.textContent = "";
       nextBtn.style.display = "none";
-      pacoImg.src = SAD;
+      pacoImg.src = "paco-sad.png";
     }
-
-    userInput.addEventListener("keyup", (event) => {
-      if (event.key === "Enter") checkAnswer();
-    });
+    userInput.addEventListener("keyup", (e) => { if (e.key === "Enter") checkAnswer(); });
   </script>
 </body>
 </html>
