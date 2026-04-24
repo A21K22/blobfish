@@ -15,10 +15,7 @@
       --terracotta: #C4522A;
       --gold: #D4A843;
       --gold-dark: #A07A20;
-      --sage: #5C7A5F;
       --accent: #D4A843;
-      --accent-dark: #A07A20;
-      --accent-light: rgba(212,168,67,0.1);
     }
 
     body {
@@ -28,16 +25,7 @@
       min-height: 100vh;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,168,67,0.08) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* NAV: Updated to 0.75 opacity */
+    /* NAV: Set to 0.75 opacity */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -61,7 +49,6 @@
     }
 
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-
     .nav-links a {
       text-decoration: none;
       color: var(--ink);
@@ -69,33 +56,29 @@
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      transition: color 0.2s;
     }
-
-    .nav-links a:hover { color: var(--gold-dark); }
-    .nav-links a.active { color: var(--gold-dark); border-bottom: 1.5px solid var(--gold-dark); padding-bottom: 2px; }
 
     main {
       position: relative;
       z-index: 1;
       max-width: 920px;
       margin: 0 auto;
-      padding: 7rem 2rem 5rem;
+      padding: 9rem 2rem 5rem; /* Increased top padding for better spacing from Nav */
     }
 
     .page-header {
-      margin-bottom: 3.5rem;
+      margin-bottom: 4rem;
       opacity: 0;
       animation: fadeUp 0.7s ease forwards 0.1s;
     }
 
-    /* SECTION 3 TAG: Added 1.5rem indent/margin-bottom */
+    /* SECTION TAG: Increased indent/spacing to 2rem */
     .page-tag {
       font-size: 0.7rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold-dark);
-      margin-bottom: 1.5rem; 
+      margin-bottom: 2rem; 
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -116,43 +99,18 @@
       margin-bottom: 1rem;
     }
 
-    .page-intro {
-      font-size: 1rem;
-      color: rgba(26,18,8,0.6);
-      max-width: 520px;
-      line-height: 1.8;
-    }
-
-    .vocab-section {
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeUp 0.7s ease forwards;
-    }
-
+    .vocab-section { margin-bottom: 3rem; }
     .section-label {
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold-dark);
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(26,18,8,0.1);
-    }
-
-    .section-title-h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(26,18,8,0.1); }
 
     .vocab-grid {
       display: grid;
@@ -165,69 +123,21 @@
       border: 1px solid rgba(26,18,8,0.08);
       border-radius: 4px;
       padding: 1rem 1.2rem;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-      position: relative;
-      overflow: hidden;
+      transition: transform 0.2s;
     }
 
-    .vocab-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.25s;
-    }
-
-    .vocab-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,18,8,0.08); }
-    .vocab-card:hover::after { transform: scaleX(1); }
-
-    .vocab-es { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; color: var(--ink); }
+    .vocab-es { font-weight: 700; font-size: 1rem; color: var(--ink); }
     .vocab-en { font-size: 0.8rem; color: rgba(26,18,8,0.45); font-style: italic; }
 
     .phrase-list { display: flex; flex-direction: column; gap: 0.6rem; }
     .phrase-item {
-      background: white; border: 1px solid rgba(26,18,8,0.07); border-left: 3px solid var(--accent);
-      border-radius: 0 4px 4px 0; padding: 0.8rem 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: center;
+      background: white; border-left: 3px solid var(--accent);
+      padding: 0.8rem 1.2rem; display: grid; grid-template-columns: 1fr 1fr;
     }
-    .phrase-es { font-weight: 600; font-size: 0.9rem; }
-    .phrase-en { font-size: 0.82rem; color: rgba(26,18,8,0.45); font-style: italic; }
-
-    .flashcard-zone {
-      background: white; border: 1px solid rgba(26,18,8,0.1); border-radius: 6px; padding: 2rem;
-      text-align: center; opacity: 0; animation: fadeUp 0.7s ease forwards 0.8s;
-    }
-    .flashcard {
-      background: var(--cream); border: 2px solid rgba(26,18,8,0.08); border-radius: 6px; padding: 2rem;
-      min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      cursor: pointer; margin-bottom: 1rem;
-    }
-    .card-front, .card-back { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; }
-    .card-back { display: none; color: var(--accent-dark); }
-    .card-hint { font-size: 0.75rem; color: rgba(26,18,8,0.35); margin-top: 0.5rem; }
-    .fc-controls { display: flex; gap: 1rem; justify-content: center; }
-    .fc-btn { background: var(--accent); color: white; border: none; border-radius: 4px; padding: 0.6rem 1.5rem; font-size: 0.85rem; cursor: pointer; }
-    .fc-btn.secondary { background: transparent; border: 1px solid rgba(26,18,8,0.15); color: var(--ink); }
-    .fc-counter { font-size: 0.8rem; color: rgba(26,18,8,0.4); margin-top: 1rem; }
-
-    .page-nav {
-      display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem;
-      border-top: 1px solid rgba(26,18,8,0.1); opacity: 0; animation: fadeUp 0.7s ease forwards 1s;
-    }
-    .page-nav a { text-decoration: none; color: var(--ink); font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 700px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1rem; }
-      .vocab-grid { grid-template-columns: 1fr 1fr; }
-      .phrase-item { grid-template-columns: 1fr; gap: 0.2rem; }
     }
   </style>
 </head>
@@ -237,19 +147,17 @@
     <a href="index.html" class="nav-logo">Español</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="present-perfect.html">Present Perfect</a></li>
-      <li><a href="past-perfect.html">Past Perfect</a></li>
-      <li><a href="vocabulario.html" class="active">Vocabulary</a></li>
+      <li><a href="vocabulario.html" style="color:var(--gold-dark); border-bottom: 1.5px solid var(--gold-dark);">Vocabulary</a></li>
     </ul>
   </nav>
 
   <main>
-    <header class="page-header">
-      <p class="page-tag">Sección tres</p>
-      <h1>Vocabulario<br><em style="font-style:italic;color:var(--gold-dark)">Sección 3</em></h1>
-      <p class="page-intro">Domina el léxico de la ciencia y la tecnología del futuro.</p>
+     <header class="page-header">
+      <p class="page-tag">Section Three</p>
+      <h1>Vocabulary <em style="font-style:italic;color:var(--sage)">Section 8</em></h1>
+      <p class="h1-spanish">Ciencias y Technologías</p>
+      <p class="page-intro">The past perfect describes an action that was <strong>already completed before another past event</strong>. It is the "past of the past." Formed with the <em>imperfect</em> of <strong>haber</strong> + a past participle.</p>
     </header>
-
     <div class="vocab-section">
       <p class="section-label">Verbos</p>
       <div class="vocab-grid">
@@ -303,14 +211,6 @@
         <div class="vocab-card"><p class="vocab-es">el planeta</p><p class="vocab-en">planet</p></div>
         <div class="vocab-card"><p class="vocab-es">el telescopio</p><p class="vocab-en">telescope</p></div>
         <div class="vocab-card"><p class="vocab-es">el transbordador</p><p class="vocab-en">shuttle</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la astronauta</p><p class="vocab-en">astronaut</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la astrónomo/a</p><p class="vocab-en">astronomer</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la biólogo/a</p><p class="vocab-en">biologist</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la científico/a</p><p class="vocab-en">scientist</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la físico/a</p><p class="vocab-en">physicist</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la ingeniero/a</p><p class="vocab-en">engineer</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la matemático/a</p><p class="vocab-en">mathematician</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la químico/a</p><p class="vocab-en">chemist</p></div>
         <div class="vocab-card"><p class="vocab-es">el ADN</p><p class="vocab-en">DNA</p></div>
         <div class="vocab-card"><p class="vocab-es">el avance</p><p class="vocab-en">breakthrough</p></div>
         <div class="vocab-card"><p class="vocab-es">la célula</p><p class="vocab-en">cell</p></div>
@@ -339,12 +239,8 @@
         <div class="vocab-card"><p class="vocab-es">en línea</p><p class="vocab-en">online</p></div>
         <div class="vocab-card"><p class="vocab-es">inalámbrico/a</p><p class="vocab-en">wireless</p></div>
         <div class="vocab-card"><p class="vocab-es">avanzado/a</p><p class="vocab-en">advanced</p></div>
-        <div class="vocab-card"><p class="vocab-es">especializado/a</p><p class="vocab-en">specialized</p></div>
         <div class="vocab-card"><p class="vocab-es">ético/a</p><p class="vocab-en">ethical</p></div>
         <div class="vocab-card"><p class="vocab-es">innovador(a)</p><p class="vocab-en">innovative</p></div>
-        <div class="vocab-card"><p class="vocab-es">revolucionario/a</p><p class="vocab-en">revolutionary</p></div>
-        <div class="vocab-card"><p class="vocab-es">duro/a</p><p class="vocab-en">hard / difficult</p></div>
-        <div class="vocab-card"><p class="vocab-es">apagado/a</p><p class="vocab-en">off</p></div>
       </div>
     </div>
 
@@ -356,72 +252,6 @@
         <div class="phrase-item"><span class="phrase-es">A la vanguardia.</span><span class="phrase-en">At the forefront.</span></div>
       </div>
     </div>
-
-    <div class="flashcard-zone">
-      <h3>Practica con Tarjetas</h3>
-      <div class="flashcard" id="flashcard" onclick="flipCard()">
-        <div class="card-front" id="card-front">la arroba</div>
-        <div class="card-back" id="card-back">@ symbol</div>
-        <p class="card-hint" id="card-hint">Haz clic para revelar →</p>
-      </div>
-      <div class="fc-controls">
-        <button class="fc-btn secondary" onclick="prevCard()">← Anterior</button>
-        <button class="fc-btn" onclick="nextCard()">Siguiente →</button>
-      </div>
-      <p class="fc-counter" id="fc-counter">1 / 10</p>
-    </div>
-
-    <nav class="page-nav">
-      <a href="past-perfect.html">← Past Perfect</a>
-      <a href="index.html">Inicio →</a>
-    </nav>
   </main>
-
-  <script>
-    const cards = [
-      { es: 'la arroba', en: '@ symbol' },
-      { es: 'el cohete', en: 'rocket' },
-      { es: 'la contraseña', en: 'password' },
-      { es: 'clonar', en: 'to clone' },
-      { es: 'el desafío', en: 'challenge' },
-      { es: 'a la vanguardia', en: 'at the forefront' },
-      { es: 'la guita', en: 'money' },
-      { es: 'el ovni', en: 'UFO' },
-      { es: 'inalámbrico/a', en: 'wireless' },
-      { es: 'la informática', en: 'computer science' }
-    ];
-
-    let current = 0;
-    let flipped = false;
-    const frontEl = document.getElementById('card-front');
-    const backEl = document.getElementById('card-back');
-    const hintEl = document.getElementById('card-hint');
-    const counterEl = document.getElementById('fc-counter');
-
-    function updateCard() {
-      frontEl.style.display = 'block';
-      backEl.style.display = 'none';
-      hintEl.textContent = 'Haz clic para revelar →';
-      frontEl.textContent = cards[current].es;
-      backEl.textContent = cards[current].en;
-      counterEl.textContent = `${current + 1} / ${cards.length}`;
-      flipped = false;
-    }
-
-    function flipCard() {
-      if (!flipped) {
-        frontEl.style.display = 'none';
-        backEl.style.display = 'block';
-        hintEl.textContent = cards[current].es;
-        flipped = true;
-      } else {
-        updateCard();
-      }
-    }
-
-    function nextCard() { current = (current + 1) % cards.length; updateCard(); }
-    function prevCard() { current = (current - 1 + cards.length) % cards.length; updateCard(); }
-    updateCard();
-  </script>
 </body>
 </html>
