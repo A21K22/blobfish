@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vocabulario — Español</title>
+  <title>Vocabulario — Sección 3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -13,7 +13,6 @@
       --cream: #F5F0E8;
       --ink: #1A1208;
       --terracotta: #C4522A;
-      --gold: #D4A843;
       --gold-dark: #A07A20;
       --accent: #D4A843;
     }
@@ -35,51 +34,50 @@
       justify-content: space-between;
       padding: 1.2rem 3rem;
       background: rgba(245, 240, 232, 0.75); 
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       border-bottom: 1px solid rgba(26,18,8,0.08);
     }
 
     .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--terracotta); text-decoration: none; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--ink); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
-    .nav-links a.active { color: var(--gold-dark); border-bottom: 1.5px solid var(--gold-dark); padding-bottom: 2px; }
 
     main {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 10rem 2rem 5rem;
+      padding: 12rem 2rem 5rem;
     }
 
-    /* HEADER STYLING MATCHING IMAGE */
+    /* HEADER: MATCHING SCREENSHOT EXACTLY */
     .page-tag {
       font-size: 0.75rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold-dark);
-      margin-bottom: 2rem; /* The Indent */
+      margin-bottom: 3.5rem; 
       display: flex;
       align-items: center;
       gap: 1rem;
     }
 
-    .page-tag span { opacity: 0.4; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
+    .page-tag span { opacity: 0.3; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      font-weight: 900;
-      line-height: 0.9;
+      font-size: clamp(3.5rem, 8vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1;
       margin-bottom: 1.5rem;
-      color: var(--ink);
     }
 
-    h1 em { font-style: italic; font-weight: 400; color: var(--ink); }
+    h1 em { font-style: italic; font-weight: 400; margin-left: 0.2rem; }
 
-    .header-sub { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem; }
-    .header-desc { font-size: 1rem; color: rgba(26,18,8,0.7); max-width: 800px; margin-bottom: 4rem; }
+    .header-sub { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem; margin-top: 2rem; }
+    .header-desc { font-size: 1rem; color: rgba(26,18,8,0.7); max-width: 850px; line-height: 1.7; }
 
-    /* CONTENT SECTIONS */
-    .vocab-section { margin-bottom: 4rem; opacity: 0; animation: fadeUp 0.8s ease forwards; }
+    /* GRID & CARDS */
+    .vocab-section { margin-top: 4rem; }
     .section-label {
       font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--gold-dark); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;
@@ -89,12 +87,9 @@
     .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
     .vocab-card {
       background: white; border: 1px solid rgba(26,18,8,0.08); padding: 1.25rem;
-      transition: all 0.3s ease; position: relative;
+      transition: all 0.3s ease;
     }
     .vocab-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(26,18,8,0.06); }
-    .vocab-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--accent); transform: scaleX(0); transition: 0.3s; }
-    .vocab-card:hover::after { transform: scaleX(1); }
-
     .vocab-es { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.2rem; }
     .vocab-en { font-size: 0.85rem; color: rgba(26,18,8,0.5); font-style: italic; }
 
@@ -103,10 +98,7 @@
       background: white; border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem;
       display: grid; grid-template-columns: 1fr 1fr; align-items: center;
     }
-    .phrase-es { font-weight: 600; font-size: 1rem; }
-    .phrase-en { color: rgba(26,18,8,0.45); font-style: italic; }
 
-    /* FLASHCARDS */
     .flashcard-zone {
       background: white; border: 1px solid rgba(26,18,8,0.1); padding: 3rem;
       text-align: center; margin-top: 5rem; border-radius: 4px;
@@ -118,32 +110,29 @@
     }
     .card-front, .card-back { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
     .card-back { display: none; color: var(--terracotta); }
-    .fc-btn { background: var(--ink); color: white; border: none; padding: 1rem 2rem; cursor: pointer; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo">Español</a>
+    <a href="#" class="nav-logo">Español</a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="present-perfect.html">Present Perfect</a></li>
-      <li><a href="past-perfect.html">Past Perfect</a></li>
-      <li><a href="vocabulario.html" class="active">Vocabulary</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Present Perfect</a></li>
+      <li><a href="#">Past Perfect</a></li>
+      <li><a href="#" style="color:var(--gold-dark)">Vocabulary</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="page-header">
-      <p class="page-tag">Section One</p>
-      <h1>Vocabulary <em style="font-style:italic;color:var(--terracotta)">Section 8</em></h1>
-      <p class="h1-spanish">Vocabulario</p>
-      <p class="page-intro">Here are a bunch of words on a variety of scientific topics, including nouns, verbs, adjectives, and phrases.</p>
+      <p class="page-tag"><span>03</span> SECTION THREE</p>
+      <h1>Vocabulary <em>Section 3</em></h1>
+      <p class="header-sub">Ciencias y Tecnologías</p>
+      <p class="header-desc">
+        The past perfect describes an action that was <strong>already completed before another past event</strong>. 
+        It is the "past of the past." Formed with the <em>imperfect</em> of <strong>haber</strong> + a past participle.
+      </p>
     </header>
 
     <div class="vocab-section">
@@ -175,16 +164,13 @@
       <p class="section-label">Sustantivos</p>
       <div class="vocab-grid">
         <div class="vocab-card"><p class="vocab-es">la arroba</p><p class="vocab-en">@ symbol</p></div>
-        <div class="vocab-card"><p class="vocab-es">el blog / la bitácora</p><p class="vocab-en">blog</p></div>
         <div class="vocab-card"><p class="vocab-es">el buscador</p><p class="vocab-en">search engine</p></div>
         <div class="vocab-card"><p class="vocab-es">la computadora portátil</p><p class="vocab-en">laptop</p></div>
         <div class="vocab-card"><p class="vocab-es">la contraseña</p><p class="vocab-en">password</p></div>
-        <div class="vocab-card"><p class="vocab-es">el corrector ortográfico</p><p class="vocab-en">spell checker</p></div>
         <div class="vocab-card"><p class="vocab-es">la informática</p><p class="vocab-en">computer science</p></div>
         <div class="vocab-card"><p class="vocab-es">el mensaje</p><p class="vocab-en">message</p></div>
         <div class="vocab-card"><p class="vocab-es">la página web</p><p class="vocab-en">web page</p></div>
-        <div class="vocab-card"><p class="vocab-es">el programa</p><p class="vocab-en">software</p></div>
-        <div class="vocab-card"><p class="vocab-es">el reproductor</p><p class="vocab-en">MP3 player</p></div>
+        <div class="vocab-card"><p class="vocab-es">el programa / el software</p><p class="vocab-en">software</p></div>
         <div class="vocab-card"><p class="vocab-es">el celular</p><p class="vocab-en">cell phone</p></div>
         <div class="vocab-card"><p class="vocab-es">el agujero negro</p><p class="vocab-en">black hole</p></div>
         <div class="vocab-card"><p class="vocab-es">el cohete</p><p class="vocab-en">rocket</p></div>
@@ -198,7 +184,6 @@
         <div class="vocab-card"><p class="vocab-es">el telescopio</p><p class="vocab-en">telescope</p></div>
         <div class="vocab-card"><p class="vocab-es">el transbordador</p><p class="vocab-en">shuttle</p></div>
         <div class="vocab-card"><p class="vocab-es">el/la astronauta</p><p class="vocab-en">astronaut</p></div>
-        <div class="vocab-card"><p class="vocab-es">el/la científico/a</p><p class="vocab-en">scientist</p></div>
         <div class="vocab-card"><p class="vocab-es">el ADN</p><p class="vocab-en">DNA</p></div>
         <div class="vocab-card"><p class="vocab-es">el avance</p><p class="vocab-en">breakthrough</p></div>
         <div class="vocab-card"><p class="vocab-es">la célula</p><p class="vocab-en">cell</p></div>
@@ -226,10 +211,10 @@
         <div class="vocab-card"><p class="vocab-es">en línea</p><p class="vocab-en">online</p></div>
         <div class="vocab-card"><p class="vocab-es">inalámbrico/a</p><p class="vocab-en">wireless</p></div>
         <div class="vocab-card"><p class="vocab-es">avanzado/a</p><p class="vocab-en">advanced</p></div>
-        <div class="vocab-card"><p class="vocab-es">especializado/a</p><p class="vocab-en">specialized</p></div>
         <div class="vocab-card"><p class="vocab-es">ético/a</p><p class="vocab-en">ethical</p></div>
         <div class="vocab-card"><p class="vocab-es">innovador(a)</p><p class="vocab-en">innovative</p></div>
         <div class="vocab-card"><p class="vocab-es">revolucionario/a</p><p class="vocab-en">revolutionary</p></div>
+        <div class="vocab-card"><p class="vocab-es">especializado/a</p><p class="vocab-en">specialized</p></div>
         <div class="vocab-card"><p class="vocab-es">duro/a</p><p class="vocab-en">hard / difficult</p></div>
         <div class="vocab-card"><p class="vocab-es">apagado/a</p><p class="vocab-en">off</p></div>
       </div>
@@ -250,7 +235,7 @@
         <div class="card-back" id="card-back">@ symbol</div>
         <p style="margin-top:2rem; font-size:0.7rem; letter-spacing:0.1em; opacity:0.4;">CLICK TO REVEAL</p>
       </div>
-      <button class="fc-btn" onclick="nextCard()">Next Word</button>
+      <button style="background:var(--ink); color:white; border:none; padding:1rem 2rem; cursor:pointer;" onclick="nextCard()">Next Word</button>
     </div>
   </main>
 
@@ -258,9 +243,9 @@
     const cards = [
       { es: 'la arroba', en: '@ symbol' },
       { es: 'el cohete', en: 'rocket' },
-      { es: 'el desafío', en: 'challenge' },
+      { es: 'la contraseña', en: 'password' },
       { es: 'clonar', en: 'to clone' },
-      { es: 'la guita', en: 'money' },
+      { es: 'innovador(a)', en: 'innovative' },
       { es: 'inalámbrico/a', en: 'wireless' }
     ];
 
